@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>成考专升本政治 - 题库</title>
+<style>
+:root {
+  --primary: #1a73e8;
+  --primary-light: #e8f0fe;
+  --primary-dark: #1557b0;
+  --success: #0d904f;
+  --success-light: #e6f4ea;
+  --error: #d93025;
+  --error-light: #fce8e6;
+  --warning: #f9ab00;
+  --warning-light: #fef7e0;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #202124;
+  --text-secondary: #5f6368;
+  --border: #dadce0;
+  --shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
+  --shadow-hover: 0 4px 12px rgba(0,0,0,0.15);
+  --radius: 12px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  padding: 24px 20px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.header-sub { font-size: 13px; opacity: 0.9; margin-bottom: 12px; }
+.stats-bar { display: flex; gap: 12px; flex-wrap: wrap; }
+.stat-item {
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 13px;
+}
+.stat-item strong { font-size: 16px; display: block; }
+.toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  align-items: center;
+  position: sticky;
+  top: 120px;
+  z-index: 99;
+}
+.btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn:hover { background: var(--primary-light); border-color: var(--primary); }
+.btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-success { background: var(--success); color: #fff; border-color: var(--success); }
+.btn-success:hover { background: #0b7a43; }
+.btn-danger { color: var(--error); border-color: var(--error); }
+.btn-danger:hover { background: var(--error-light); }
+.container { max-width: 800px; margin: 0 auto; padding: 16px 20px 80px; }
+.tab-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 0 16px;
+  -webkit-overflow-scrolling: touch;
+}
+.tab-item {
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.tab-item:hover { border-color: var(--primary); }
+.tab-item.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.question-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.question-card:hover { box-shadow: var(--shadow-hover); }
+.q-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  background: #fafbfc;
+}
+.q-id { font-weight: 700; color: var(--primary); font-size: 14px; }
+.q-type {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: var(--primary-light);
+  color: var(--primary);
+}
+.q-type.choice { background: #e8f5e9; color: #2e7d32; }
+.q-type.essay { background: #fff3e0; color: #e65100; }
+.q-body { padding: 20px; }
+.q-stem { font-size: 15px; font-weight: 500; margin-bottom: 16px; white-space: pre-line; }
+.q-options { display: flex; flex-direction: column; gap: 10px; }
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+.option-item:hover { border-color: var(--primary); background: var(--primary-light); }
+.option-item.selected { border-color: var(--primary); background: var(--primary-light); }
+.option-item.correct { border-color: var(--success); background: var(--success-light); }
+.option-item.wrong { border-color: var(--error); background: var(--error-light); }
+.option-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.option-item.selected .option-radio { border-color: var(--primary); background: var(--primary); }
+.option-item.correct .option-radio { border-color: var(--success); background: var(--success); }
+.option-item.wrong .option-radio { border-color: var(--error); background: var(--error); }
+.q-textarea-wrap textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+.q-textarea-wrap textarea:focus { border-color: var(--primary); outline: none; }
+.result-indicator {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  display: none;
+}
+.result-indicator.show { display: block; }
+.result-indicator.correct { background: var(--success-light); color: var(--success); }
+.result-indicator.wrong { background: var(--error-light); color: var(--error); }
+.q-actions {
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+}
+.q-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.q-answer.show { max-height: 800px; }
+.answer-box {
+  margin: 0 20px 20px;
+  padding: 16px;
+  background: #f0f7ff;
+  border-radius: 10px;
+  border-left: 4px solid var(--primary);
+  font-size: 14px;
+}
+.answer-box .label {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.answer-box .content { white-space: pre-line; }
+.topic-label {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 12px 0 8px;
+  color: var(--primary-dark);
+}
+.progress-ring-wrap {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  z-index: 50;
+}
+.progress-ring { transform: rotate(-90deg); }
+.progress-ring-bg { fill: none; stroke: #e0e0e0; stroke-width: 5; }
+.progress-ring-fill {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease;
+}
+.progress-ring-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+}
+.scroll-top-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 50;
+}
+.scroll-top-btn.show { display: flex; }
+.review-card { border-left: 4px solid var(--error) !important; }
+@media (max-width: 600px) {
+  .header { padding: 18px 16px 16px; }
+  .header h1 { font-size: 19px; }
+  .container { padding: 12px 14px 80px; }
+  .toolbar { padding: 10px 14px; }
+  .btn { padding: 7px 12px; font-size: 12px; }
+  .q-body { padding: 14px; }
+  .q-stem { font-size: 14px; }
+  .option-item { padding: 9px 12px; font-size: 13px; }
+  .stat-item { padding: 5px 10px; font-size: 12px; }
+  .stat-item strong { font-size: 14px; }
+  .tab-item { padding: 9px 14px; font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>成考专升本政治 - 题库</h1>
+  <div class="header-sub">共 <strong id="totalQ">0</strong> 题 | 选择题 <strong id="totalChoice">0</strong> 题 · 简答题 <strong id="totalEssay">0</strong> 题</div>
+  <div class="stats-bar">
+    <div class="stat-item">已答 <strong id="statAnswered">0</strong> / <strong id="statTotal">0</strong></div>
+    <div class="stat-item">正确率 <strong id="statAccuracy">0%</strong></div>
+    <div class="stat-item">错题 <strong id="statWrong">0</strong> 题</div>
+  </div>
+</div>
+
+<div class="toolbar">
+  <button class="btn" id="btnSeq" onclick="setOrder('seq')">📖 顺序练习</button>
+  <button class="btn active" id="btnRand" onclick="setOrder('rand')">🔀 随机练习</button>
+  <div style="flex:1"></div>
+  <button class="btn btn-danger" id="btnReview" onclick="showReview()">📌 错题本 (<span id="wrongCount">0</span>)</button>
+  <button class="btn" id="btnShowAll" onclick="toggleShowAll()">👁 全部显示答案</button>
+  <button class="btn" onclick="resetAll()">🔄 重置</button>
+</div>
+
+<div class="container" id="mainContainer">
+  <div class="tab-bar" id="tabBar"></div>
+  <div id="questionList"></div>
+  <div id="reviewPanel" style="display:none"></div>
+</div>
+
+<div class="progress-ring-wrap" id="progressRing" onclick="scrollToNext()" title="跳转下一题">
+  <svg class="progress-ring" width="64" height="64">
+    <circle class="progress-ring-bg" cx="32" cy="32" r="28"/>
+    <circle class="progress-ring-fill" id="ringFill" cx="32" cy="32" r="28"
+      stroke-dasharray="175.93" stroke-dashoffset="175.93"/>
+  </svg>
+  <div class="progress-ring-text" id="ringText">0%</div>
+</div>
+
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ===================== QUESTION DATA (from JSON) =====================
+const questions = [
+  {
+    "id": 1,
+    "type": "choice",
+    "topic": "哲学基础",
+    "stem": "哲学的基本问题是（    ）",
+    "options": [
+      "A.实践和认识的关系问题",
+      "B.思维和存在的关系问题",
+      "C.自然和社会的关系问题",
+      "D.运动和静止的关系问题"
+    ],
+    "answer": "B",
+    "explanation": "哲学的基本问题指的是思维和存在的关系问题。"
+  },
+  {
+    "id": 2,
+    "type": "choice",
+    "topic": "哲学基础",
+    "stem": "世界的统一性在于（    ）",
+    "options": [
+      "A.存在性",
+      "B.可知性",
+      "C.物质性",
+      "D.精神性"
+    ],
+    "answer": "C",
+    "explanation": "世界的统一性问题，是回答世界上的万事万物有没有统一性，即有没有共同的本质或本原的问题。马克思主义认为，物质是世界的本原，社会运动也是物质运动的一种特殊形式，世界统一于物质。"
+  },
+  {
+    "id": 3,
+    "type": "choice",
+    "topic": "对立统一规律",
+    "stem": "没有上，就无所谓下；没有先进，就无所谓落后；没有正确，就无所谓错误。这说明（    ）",
+    "options": [
+      "A.矛盾双方是相互排斥的",
+      "B.矛盾双方是相互转化的",
+      "C.矛盾双方是相互依存的",
+      "D.矛盾双方是相互渗透的"
+    ],
+    "answer": "C",
+    "explanation": "\"下\"因\"上\"而存在，\"落后\"因\"先进\"而存在，\"错误\"因\"正确\"而存在，这些本来是相互矛盾的双方，其中一方的存在以另一方为依据，生动地说明矛盾双方是相互依存的，故选C项。"
+  },
+  {
+    "id": 4,
+    "type": "choice",
+    "topic": "对立统一规律",
+    "stem": "和谐是矛盾的一种特殊表现形式，体现着矛盾双方的（    ）",
+    "options": [
+      "A.绝对同一",
+      "B.相互分离",
+      "C.相互依存",
+      "D.绝对排斥"
+    ],
+    "answer": "C",
+    "explanation": "和谐是矛盾的一种特殊表现形式，体现着矛盾双方的相互依存、相互促进、共同发展，和谐并不意味着矛盾的绝对同一。和谐是相对的、有条件的，只有在矛盾双方处于平衡、协调、合作的情况下，事物才展现出和谐状态。"
+  },
+  {
+    "id": 5,
+    "type": "choice",
+    "topic": "认识论",
+    "stem": "认识的高级阶段是（    ）",
+    "options": [
+      "A.感性认识",
+      "B.理性认识",
+      "C.直接认识",
+      "D.间接认识"
+    ],
+    "answer": "B",
+    "explanation": "理性认识是人们通过抽象思维而得到的关于事物的本质、事物的全体和内在联系的认识，具有间接性和抽象性的特点，是认识发展的高级阶段。"
+  },
+  {
+    "id": 6,
+    "type": "choice",
+    "topic": "认识论",
+    "stem": "割裂感性认识和理性认识的辩证统一，会导致两种错误理论，一种是经验论，另一种是（    ）",
+    "options": [
+      "A.唯理论",
+      "B.庸俗进化论",
+      "C.激变论",
+      "D.庸俗唯物论"
+    ],
+    "answer": "A",
+    "explanation": "感性认识和理性认识在实践的基础上达到辩证统一，若割裂感性认识和理性认识的统一，则会导致唯理论和经验论的错误。"
+  },
+  {
+    "id": 7,
+    "type": "choice",
+    "topic": "认识论",
+    "stem": "一个完整的认识过程需要经过两次飞跃，下列各项属于第一次飞跃的是（    ）",
+    "options": [
+      "A.从实践到认识",
+      "B.从感觉到知觉",
+      "C.从认识到实践",
+      "D.从概念到判断"
+    ],
+    "answer": "A",
+    "explanation": "认识的过程首先是从实践到认识的过程。这个过程主要表现为在实践基础上认识活动由感性认识能动地飞跃到理性认识，也就是\"从生动的直观到抽象的思维\"，这是认识运动的第一次飞跃。"
+  },
+  {
+    "id": 8,
+    "type": "choice",
+    "topic": "社会基本矛盾",
+    "stem": "社会发展的基本矛盾是（    ）",
+    "options": [
+      "A.生产力与生产关系、经济基础与上层建筑的矛盾",
+      "B.无产阶级与资产阶级的矛盾",
+      "C.社会主义与资本主义的矛盾",
+      "D.先进与落后的矛盾"
+    ],
+    "answer": "A",
+    "explanation": "生产力和生产关系的矛盾、经济基础和上层建筑的矛盾这两对矛盾交互作用形成了社会基本矛盾运动。"
+  },
+  {
+    "id": 9,
+    "type": "choice",
+    "topic": "马克思主义中国化",
+    "stem": "第一次正式提出\"马克思主义的中国化\"这一命题是在（    ）",
+    "options": [
+      "A.党的七大",
+      "B.党的六大",
+      "C.六届六中全会",
+      "D.六届七中全会"
+    ],
+    "answer": "C",
+    "explanation": "1938年，党的六届六中全会，毛泽东在《论新阶段》的报告中，正式提出\"马克思主义的中国化\"这一命题。"
+  },
+  {
+    "id": 10,
+    "type": "choice",
+    "topic": "马克思主义中国化",
+    "stem": "邓小平理论回答的首要的基本的理论问题是（    ）",
+    "options": [
+      "A.实现什么样的发展，怎样发展",
+      "B.什么是社会主义，怎样建设社会主义",
+      "C.建设什么样的党，怎样建设党",
+      "D.新时代坚持和发展什么样的中国特色社会主义、怎样坚持和发展中国特色社会主义"
+    ],
+    "answer": "B",
+    "explanation": "邓小平理论回答的首要的基本的理论问题是什么是社会主义，怎样建设社会主义。"
+  },
+  {
+    "id": 11,
+    "type": "choice",
+    "topic": "毛泽东思想",
+    "stem": "毛泽东首次提出中国共产党的三大优良作风的党的会议是（    ）",
+    "options": [
+      "A.中共六届六中全会",
+      "B.中共七大",
+      "C.中共七届二中全会",
+      "D.中共八大"
+    ],
+    "answer": "B",
+    "explanation": "毛泽东在1945年召开的中共七大政治报告中提出了\"理论联系实践的作风、密切联系群众的作风、批评和自我批评的作风\"三大优良作风。"
+  },
+  {
+    "id": 12,
+    "type": "choice",
+    "topic": "毛泽东思想",
+    "stem": "毛泽东思想的活的灵魂是（    ）\n①实事求是 ②群众路线 ③与时俱进 ④独立自主",
+    "options": [
+      "A.①②④",
+      "B.①③④",
+      "C.①②③",
+      "D.②③④"
+    ],
+    "answer": "A",
+    "explanation": "毛泽东思想的活的灵魂是实事求是、群众路线和独立自主。"
+  },
+  {
+    "id": 13,
+    "type": "choice",
+    "topic": "新民主主义革命",
+    "stem": "在中国新民主主义革命队伍中，处于领导地位的是（    ）",
+    "options": [
+      "A.农民阶级",
+      "B.民族资产阶级",
+      "C.工人阶级",
+      "D.城市小资产阶级"
+    ],
+    "answer": "C",
+    "explanation": "中国工人阶级是新民主主义革命的领导力量。"
+  },
+  {
+    "id": 14,
+    "type": "choice",
+    "topic": "习近平新时代中国特色社会主义思想",
+    "stem": "中国特色社会主义事业总体布局和战略布局分别是（    ）",
+    "options": [
+      "A.\"两个转变\"和\"一体两翼\"",
+      "B.\"五位一体\"和\"四个全面\"",
+      "C.\"八个明确\"和\"四面八方\"",
+      "D.\"一个中心\"和\"五湖四海\""
+    ],
+    "answer": "B",
+    "explanation": "中国特色社会主义事业总体布局是\"五位一体\"，战略布局是\"四个全面\"。"
+  },
+  {
+    "id": 15,
+    "type": "essay",
+    "topic": "过渡时期总路线",
+    "stem": "简述党在过渡时期总路线的内容及其内在关系。",
+    "answer": "（1）党在过渡时期的总路线，以\"一化三改\"为核心，包括两方面的内容：一是逐步实现社会主义工业化，这是总路线的主体；二是逐步实现对农业、手工业和资本主义工商业的社会主义改造，这是总路线的两翼。\n（2）工业化是社会主义改造的基础和目的；社会主义改造是工业化不可缺少的条件和手段，这两方面互相联系，互相促进，互相制约，体现了发展生产力和变革生产关系的有机统一，是一条社会主义建设和社会主义改造同时并举的路线。"
+  },
+  {
+    "id": 16,
+    "type": "essay",
+    "topic": "社会主义建设初步探索",
+    "stem": "党在社会主义初步探索时期的经验教训。",
+    "answer": "（1）必须把马列主义普遍原理和中国的实际相结合，走适合中国自己的路。\n（2）必须正确认识社会主义社会的主要矛盾和根本任务，大力发展生产力。\n（3）必须从实际出发进行社会主义建设，不能急于求成。\n（4）必须发展社会主义民主，健全社会主义法制。\n（5）必须加强党的建设，坚持民主集中制和集体领导制度。\n（6）必须坚持对外开放，借鉴和吸收人类文明成果。"
+  },
+  {
+    "id": 17,
+    "type": "essay",
+    "topic": "习近平新时代中国特色社会主义思想",
+    "stem": "中国特色社会主义事业总体布局和战略布局分别是什么？",
+    "answer": "（1）中国特色社会主义事业总体布局是经济建设、政治建设、文化建设、社会建设、生态文明建设\"五位一体\"。\n（2）战略布局是全面建设社会主义现代化国家、全面深化改革、全面依法治国、全面从严治党\"四个全面\"。"
+  },
+  {
+    "id": 18,
+    "type": "choice",
+    "topic": "唯物主义与唯心主义",
+    "stem": "划分唯物主义和唯心主义的根本标准是（    ）",
+    "options": [
+      "A.是否承认世界的统一性",
+      "B.思维和存在何者为第一性的问题",
+      "C.是否承认世界的可知性",
+      "D.是否承认事物的运动变化"
+    ],
+    "answer": "B",
+    "explanation": "思维和存在、物质和意识何为本原的问题，即何者为第一性问题，是划分唯物主义和唯心主义的根本标准。"
+  },
+  {
+    "id": 19,
+    "type": "choice",
+    "topic": "唯物主义与唯心主义",
+    "stem": "\"存在就是被感知\"这一观点属于（    ）",
+    "options": [
+      "A.客观唯心主义",
+      "B.主观唯心主义",
+      "C.朴素唯物主义",
+      "D.辩证唯物主义"
+    ],
+    "answer": "B",
+    "explanation": "\"存在就是被感知\"认为事物的存在依赖于人的感知，把人的主观感觉看作世界的本原，属于主观唯心主义观点。"
+  },
+  {
+    "id": 20,
+    "type": "choice",
+    "topic": "物质与意识",
+    "stem": "物质的唯一特性是（    ）",
+    "options": [
+      "A.运动性",
+      "B.客观实在性",
+      "C.可知性",
+      "D.时空性"
+    ],
+    "answer": "B",
+    "explanation": "物质是不依赖于意识又能为意识所反映的客观实在。物质的唯一特性是客观实在性。"
+  },
+  {
+    "id": 21,
+    "type": "choice",
+    "topic": "辩证法",
+    "stem": "唯物辩证法的实质和核心是（    ）",
+    "options": [
+      "A.质量互变规律",
+      "B.否定之否定规律",
+      "C.对立统一规律",
+      "D.联系和发展的观点"
+    ],
+    "answer": "C",
+    "explanation": "对立统一规律是唯物辩证法的实质和核心。对立统一规律提供了人们认识世界和改造世界的根本方法——矛盾分析方法。"
+  },
+  {
+    "id": 22,
+    "type": "choice",
+    "topic": "辩证法",
+    "stem": "辩证否定的实质是（    ）",
+    "options": [
+      "A.外力的作用",
+      "B.全盘否定",
+      "C.扬弃",
+      "D.事物的量变"
+    ],
+    "answer": "C",
+    "explanation": "辩证否定的实质是\"扬弃\"，即新事物对旧事物既批判又继承，既克服其消极因素又保留其积极因素。"
+  },
+  {
+    "id": 23,
+    "type": "choice",
+    "topic": "实践与认识",
+    "stem": "实践是检验真理的唯一标准，这主要是因为（    ）",
+    "options": [
+      "A.实践具有社会历史性",
+      "B.实践是认识的来源",
+      "C.实践具有直接现实性",
+      "D.实践是认识发展的动力"
+    ],
+    "answer": "C",
+    "explanation": "实践之所以是检验真理的唯一标准，是由实践的特点和真理的本性决定的。实践具有直接现实性，能够把主观认识同客观实际联系起来加以对照，从而检验认识是否正确。"
+  },
+  {
+    "id": 24,
+    "type": "choice",
+    "topic": "历史唯物主义",
+    "stem": "社会历史观的基本问题是（    ）",
+    "options": [
+      "A.生产力和生产关系的关系问题",
+      "B.社会存在和社会意识的关系问题",
+      "C.经济基础和上层建筑的关系问题",
+      "D.人民群众和杰出人物的关系问题"
+    ],
+    "answer": "B",
+    "explanation": "社会存在与社会意识的关系问题，是社会历史观的基本问题。正确认识这一问题是解决其他社会历史观问题的基础和前提。"
+  },
+  {
+    "id": 25,
+    "type": "choice",
+    "topic": "历史唯物主义",
+    "stem": "人民群众是历史的创造者，其根本原因在于（    ）",
+    "options": [
+      "A.人民群众占人口的大多数",
+      "B.人民群众具有先进思想",
+      "C.人民群众是社会物质文明和精神文明的创造者",
+      "D.人民群众的活动不受任何制约"
+    ],
+    "answer": "C",
+    "explanation": "人民群众是历史的创造者，在历史发展中起推动作用，主要表现在：人民群众是社会物质文明的创造者、社会精神文明的创造者、实现社会变革的决定力量。"
+  },
+  {
+    "id": 26,
+    "type": "choice",
+    "topic": "毛泽东思想",
+    "stem": "毛泽东思想被确立为党的指导思想是在（    ）",
+    "options": [
+      "A.遵义会议",
+      "B.党的六大",
+      "C.党的七大",
+      "D.党的七届二中全会"
+    ],
+    "answer": "C",
+    "explanation": "1945年党的七大，毛泽东思想被确立为党的指导思想。"
+  },
+  {
+    "id": 27,
+    "type": "choice",
+    "topic": "毛泽东思想",
+    "stem": "毛泽东思想的精髓是（    ）",
+    "options": [
+      "A.群众路线",
+      "B.独立自主",
+      "C.实事求是",
+      "D.党的建设"
+    ],
+    "answer": "C",
+    "explanation": "实事求是是毛泽东思想的基本点，是毛泽东思想的精髓。"
+  },
+  {
+    "id": 28,
+    "type": "choice",
+    "topic": "新民主主义革命",
+    "stem": "新民主主义革命的三大法宝是（    ）",
+    "options": [
+      "A.实事求是、群众路线、独立自主",
+      "B.统一战线、武装斗争、党的建设",
+      "C.理论联系实际、密切联系群众、批评与自我批评",
+      "D.土地革命、武装斗争、根据地建设"
+    ],
+    "answer": "B",
+    "explanation": "毛泽东在《<共产党人>发刊词》中指出，统一战线、武装斗争、党的建设是中国共产党在中国革命中战胜敌人的三个法宝。"
+  },
+  {
+    "id": 29,
+    "type": "choice",
+    "topic": "新民主主义革命",
+    "stem": "中国革命的主要形式是（    ）",
+    "options": [
+      "A.土地革命",
+      "B.武装斗争",
+      "C.统一战线",
+      "D.根据地建设"
+    ],
+    "answer": "B",
+    "explanation": "武装斗争是中国革命的主要形式，是农村根据地建设和土地革命的强有力保证。"
+  },
+  {
+    "id": 30,
+    "type": "choice",
+    "topic": "社会主义改造",
+    "stem": "我国对资本主义工商业进行社会主义改造的方式是（    ）",
+    "options": [
+      "A.无偿没收",
+      "B.和平赎买",
+      "C.强制合并",
+      "D.合作经营"
+    ],
+    "answer": "B",
+    "explanation": "我国对资本主义工商业的社会主义改造采取了和平赎买的方式，这是中国社会主义改造的一个创举。"
+  },
+  {
+    "id": 31,
+    "type": "choice",
+    "topic": "社会主义改造",
+    "stem": "标志着社会主义基本制度在我国初步确立的是（    ）",
+    "options": [
+      "A.新中国的成立",
+      "B.1954年宪法的颁布",
+      "C.社会主义改造基本完成",
+      "D.第一个五年计划的完成"
+    ],
+    "answer": "C",
+    "explanation": "1956年社会主义改造的基本完成，使社会主义公有制已成为我国的经济基础，标志着社会主义基本制度在我国初步确立，我国进入社会主义初级阶段。"
+  },
+  {
+    "id": 32,
+    "type": "choice",
+    "topic": "社会主义建设探索",
+    "stem": "毛泽东在《论十大关系》中提出的方针是（    ）",
+    "options": [
+      "A.正确处理人民内部矛盾",
+      "B.调动一切积极因素为社会主义事业服务",
+      "C.以阶级斗争为纲",
+      "D.鼓足干劲、力争上游"
+    ],
+    "answer": "B",
+    "explanation": "《论十大关系》确定了一个基本方针，就是调动一切积极因素为社会主义事业服务。《论十大关系》的报告是党探索中国社会主义建设道路的良好开端。"
+  },
+  {
+    "id": 33,
+    "type": "choice",
+    "topic": "新民主主义革命",
+    "stem": "新民主主义革命的经济纲领中，没收官僚资本归新民主主义国家所有属于（    ）",
+    "options": [
+      "A.新民主主义革命性质",
+      "B.社会主义革命性质",
+      "C.旧民主主义革命性质",
+      "D.资产阶级革命性质"
+    ],
+    "answer": "B",
+    "explanation": "没收官僚资本归新民主主义国家所有，具有新民主主义革命和社会主义革命的双重性质。从反对买办资产阶级的意义上看，它具有民主革命的性质；从消灭大资本的意义上看，它又具有社会主义革命的性质。"
+  },
+  {
+    "id": 34,
+    "type": "choice",
+    "topic": "邓小平理论",
+    "stem": "邓小平理论的精髓是（    ）",
+    "options": [
+      "A.社会主义初级阶段理论",
+      "B.社会主义市场经济理论",
+      "C.解放思想、实事求是",
+      "D.改革开放"
+    ],
+    "answer": "C",
+    "explanation": "解放思想、实事求是，是邓小平理论的精髓。"
+  },
+  {
+    "id": 35,
+    "type": "choice",
+    "topic": "邓小平理论",
+    "stem": "邓小平在1992年南方谈话中对社会主义本质作出了总结性概括，下列属于其内容的是（    ）",
+    "options": [
+      "A.以公有制为主体，多种所有制经济共同发展",
+      "B.解放生产力，发展生产力，消灭剥削，消除两极分化，最终达到共同富裕",
+      "C.以经济建设为中心，坚持四项基本原则，坚持改革开放",
+      "D.建立社会主义市场经济体制"
+    ],
+    "answer": "B",
+    "explanation": "1992年初，邓小平在南方谈话中指出：\"社会主义的本质，是解放生产力，发展生产力，消灭剥削，消除两极分化，最终达到共同富裕。\""
+  },
+  {
+    "id": 36,
+    "type": "choice",
+    "topic": "邓小平理论",
+    "stem": "社会主义初级阶段基本路线的核心内容可概括为（    ）",
+    "options": [
+      "A.\"一个中心、两个基本点\"",
+      "B.\"两手抓、两手都要硬\"",
+      "C.\"三步走\"发展战略",
+      "D.\"四个现代化\""
+    ],
+    "answer": "A",
+    "explanation": "党在社会主义初级阶段的基本路线核心内容是\"以经济建设为中心，坚持四项基本原则，坚持改革开放\"，即\"一个中心、两个基本点\"。"
+  },
+  {
+    "id": 37,
+    "type": "choice",
+    "topic": "邓小平理论",
+    "stem": "社会主义的根本任务是（    ）",
+    "options": [
+      "A.改革开放",
+      "B.发展生产力",
+      "C.建立市场经济",
+      "D.消灭剥削"
+    ],
+    "answer": "B",
+    "explanation": "社会主义的根本任务是发展生产力。"
+  },
+  {
+    "id": 38,
+    "type": "choice",
+    "topic": "邓小平理论",
+    "stem": "邓小平理论形成的国际背景是（    ）",
+    "options": [
+      "A.东欧剧变、苏联解体",
+      "B.和平与发展成为时代主题",
+      "C.世界大发展大变革大调整",
+      "D.世界进入新的动荡变革期"
+    ],
+    "answer": "B",
+    "explanation": "邓小平理论形成的国际背景是和平与发展成为时代主题。"
+  },
+  {
+    "id": 39,
+    "type": "choice",
+    "topic": "邓小平理论",
+    "stem": "\"一国两制\"的核心是（    ）",
+    "options": [
+      "A.两制并存",
+      "B.高度自治",
+      "C.坚持一个中国",
+      "D.和平统一"
+    ],
+    "answer": "C",
+    "explanation": "坚持一个中国，这是\"和平统一，一国两制\"的核心，是发展两岸关系和实现和平统一的基础。"
+  },
+  {
+    "id": 40,
+    "type": "choice",
+    "topic": "邓小平理论",
+    "stem": "邓小平提出计划和市场都是经济手段，这一论断的意义在于（    ）",
+    "options": [
+      "A.否定了社会主义需要计划",
+      "B.认为市场经济等于资本主义",
+      "C.突破了把计划经济和市场经济看作社会制度标志的传统观念",
+      "D.主张完全放弃计划手段"
+    ],
+    "answer": "C",
+    "explanation": "邓小平指出计划经济和市场经济不是划分社会制度的标志，计划经济不等于社会主义，市场经济也不等于资本主义，突破了传统观念的束缚。"
+  },
+  {
+    "id": 41,
+    "type": "choice",
+    "topic": "邓小平理论",
+    "stem": "正式提出\"邓小平理论\"这一概念并将其确立为党的指导思想是在（    ）",
+    "options": [
+      "A.党的十三大",
+      "B.党的十四大",
+      "C.党的十五大",
+      "D.党的十二大"
+    ],
+    "answer": "C",
+    "explanation": "1997年党的十五大正式提出\"邓小平理论\"这一概念，将邓小平理论确立为党的指导思想并写入党章。"
+  },
+  {
+    "id": 42,
+    "type": "choice",
+    "topic": "三个代表",
+    "stem": "\"三个代表\"重要思想创造性地回答了（    ）",
+    "options": [
+      "A.什么是社会主义、怎样建设社会主义",
+      "B.实现什么样的发展、怎样发展",
+      "C.建设什么样的党、怎样建设党",
+      "D.新时代坚持和发展什么样的中国特色社会主义"
+    ],
+    "answer": "C",
+    "explanation": "\"三个代表\"重要思想创造性地回答了\"建设什么样的党、怎样建设党\"这一重大问题。"
+  },
+  {
+    "id": 43,
+    "type": "choice",
+    "topic": "三个代表",
+    "stem": "发展是党执政兴国的（    ）",
+    "options": [
+      "A.根本任务",
+      "B.第一要务",
+      "C.基本要求",
+      "D.核心立场"
+    ],
+    "answer": "B",
+    "explanation": "发展是党执政兴国的第一要务，是\"三个代表\"重要思想的重要内容。"
+  },
+  {
+    "id": 44,
+    "type": "choice",
+    "topic": "科学发展观",
+    "stem": "科学发展观的第一要义是（    ）",
+    "options": [
+      "A.以人为本",
+      "B.全面协调可持续",
+      "C.统筹兼顾",
+      "D.发展"
+    ],
+    "answer": "D",
+    "explanation": "科学发展观的科学内涵：第一要义是发展，核心立场是以人为本，基本要求是全面协调可持续，根本方法是统筹兼顾。"
+  },
+  {
+    "id": 45,
+    "type": "choice",
+    "topic": "科学发展观",
+    "stem": "科学发展观的核心立场是（    ）",
+    "options": [
+      "A.发展",
+      "B.以人为本",
+      "C.统筹兼顾",
+      "D.全面协调可持续"
+    ],
+    "answer": "B",
+    "explanation": "科学发展观的核心立场是以人为本。"
+  },
+  {
+    "id": 46,
+    "type": "choice",
+    "topic": "科学发展观",
+    "stem": "科学发展观创造性地回答了（    ）",
+    "options": [
+      "A.什么是社会主义、怎样建设社会主义",
+      "B.建设什么样的党、怎样建设党",
+      "C.实现什么样的发展、怎样发展",
+      "D.新时代坚持和发展什么样的中国特色社会主义"
+    ],
+    "answer": "C",
+    "explanation": "科学发展观创造性地回答了\"实现什么样的发展、怎样发展\"这一重大问题。"
+  },
+  {
+    "id": 47,
+    "type": "choice",
+    "topic": "习近平新时代中国特色社会主义思想",
+    "stem": "习近平新时代中国特色社会主义思想回答了几个重大时代课题？（    ）",
+    "options": [
+      "A.一个",
+      "B.两个",
+      "C.三个",
+      "D.四个"
+    ],
+    "answer": "C",
+    "explanation": "习近平新时代中国特色社会主义思想回答了三大时代课题：新时代坚持和发展什么样的中国特色社会主义、怎样坚持和发展中国特色社会主义；建设什么样的社会主义现代化强国、怎样建设社会主义现代化强国；建设什么样的长期执政的马克思主义政党、怎样建设长期执政的马克思主义政党。"
+  },
+  {
+    "id": 48,
+    "type": "choice",
+    "topic": "习近平新时代中国特色社会主义思想",
+    "stem": "新时代我国社会主要矛盾是（    ）",
+    "options": [
+      "A.人民日益增长的物质文化需要同落后的社会生产之间的矛盾",
+      "B.人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾",
+      "C.先进的社会制度同落后的生产力之间的矛盾",
+      "D.无产阶级同资产阶级之间的矛盾"
+    ],
+    "answer": "B",
+    "explanation": "新时代我国社会主要矛盾是人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾。"
+  },
+  {
+    "id": 49,
+    "type": "choice",
+    "topic": "习近平新时代中国特色社会主义思想",
+    "stem": "\"两个确立\"是指（    ）",
+    "options": [
+      "A.确立社会主义制度、确立市场经济体制",
+      "B.确立习近平同志党中央的核心和全党的核心地位、确立习近平新时代中国特色社会主义思想的指导地位",
+      "C.确立党的基本路线、确立改革开放",
+      "D.确立科学发展观、确立和谐社会理念"
+    ],
+    "answer": "B",
+    "explanation": "\"两个确立\"是指确立习近平同志党中央的核心、全党的核心地位；确立习近平新时代中国特色社会主义思想的指导地位。"
+  },
+  {
+    "id": 50,
+    "type": "choice",
+    "topic": "中国式现代化",
+    "stem": "中国式现代化的中国特色不包括（    ）",
+    "options": [
+      "A.人口规模巨大的现代化",
+      "B.全体人民共同富裕的现代化",
+      "C.先污染后治理的现代化",
+      "D.人与自然和谐共生的现代化"
+    ],
+    "answer": "C",
+    "explanation": "中国式现代化的中国特色包括：人口规模巨大的现代化；全体人民共同富裕的现代化；物质文明和精神文明相协调的现代化；人与自然和谐共生的现代化；走和平发展道路的现代化。不包括先污染后治理。"
+  },
+  {
+    "id": 51,
+    "type": "choice",
+    "topic": "新发展理念",
+    "stem": "新发展理念中，引领发展的第一动力是（    ）",
+    "options": [
+      "A.协调",
+      "B.绿色",
+      "C.创新",
+      "D.开放"
+    ],
+    "answer": "C",
+    "explanation": "创新是引领发展的第一动力；协调是持续健康发展的内在要求；绿色是永续发展的必要条件；开放是国家繁荣富强的必由之路；共享是中国特色社会主义的本质要求。"
+  },
+  {
+    "id": 52,
+    "type": "choice",
+    "topic": "新发展理念",
+    "stem": "新发展理念中，中国特色社会主义的本质要求是（    ）",
+    "options": [
+      "A.创新",
+      "B.协调",
+      "C.开放",
+      "D.共享"
+    ],
+    "answer": "D",
+    "explanation": "共享是中国特色社会主义的本质要求。"
+  },
+  {
+    "id": 53,
+    "type": "choice",
+    "topic": "新发展格局",
+    "stem": "新发展格局的内涵是（    ）",
+    "options": [
+      "A.以国内大循环为主体、国内国际双循环相互促进",
+      "B.以国际大循环为主体、国内国际双循环相互促进",
+      "C.以对外开放为主、对内改革为辅",
+      "D.以计划经济为主、市场经济为辅"
+    ],
+    "answer": "A",
+    "explanation": "新发展格局是以国内大循环为主体、国内国际双循环相互促进。"
+  },
+  {
+    "id": 54,
+    "type": "choice",
+    "topic": "全面深化改革",
+    "stem": "全面深化改革的总目标是（    ）",
+    "options": [
+      "A.实现中华民族伟大复兴",
+      "B.完善和发展中国特色社会主义制度、推进国家治理体系和治理能力现代化",
+      "C.建立社会主义市场经济体制",
+      "D.全面建设社会主义现代化国家"
+    ],
+    "answer": "B",
+    "explanation": "全面深化改革总目标是完善和发展中国特色社会主义制度、推进国家治理体系和治理能力现代化。"
+  },
+  {
+    "id": 55,
+    "type": "choice",
+    "topic": "全面依法治国",
+    "stem": "全面推进依法治国的总目标是（    ）",
+    "options": [
+      "A.建设中国特色社会主义法治体系、建设社会主义法治国家",
+      "B.完善宪法为核心的法律体系",
+      "C.实现司法公正",
+      "D.建设法治政府"
+    ],
+    "answer": "A",
+    "explanation": "全面推进依法治国总目标是建设中国特色社会主义法治体系、建设社会主义法治国家。"
+  },
+  {
+    "id": 56,
+    "type": "choice",
+    "topic": "总体国家安全观",
+    "stem": "总体国家安全观以人民安全为（    ）",
+    "options": [
+      "A.基础",
+      "B.宗旨",
+      "C.保障",
+      "D.根本"
+    ],
+    "answer": "B",
+    "explanation": "总体国家安全观以人民安全为宗旨，以政治安全为根本，以经济安全为基础，以军事、科技、文化、社会安全为保障，以促进国际安全为依托。"
+  },
+  {
+    "id": 57,
+    "type": "choice",
+    "topic": "人类命运共同体",
+    "stem": "推动构建人类命运共同体，要建设的世界不包括（    ）",
+    "options": [
+      "A.持久和平的世界",
+      "B.霸权稳定的世界",
+      "C.共同繁荣的世界",
+      "D.清洁美丽的世界"
+    ],
+    "answer": "B",
+    "explanation": "推动构建人类命运共同体，要建设持久和平、普遍安全、共同繁荣、开放包容、清洁美丽的世界。不包括霸权稳定。"
+  },
+  {
+    "id": 58,
+    "type": "choice",
+    "topic": "新时代党的建设",
+    "stem": "全面从严治党的核心是（    ）",
+    "options": [
+      "A.加强纪律建设",
+      "B.加强党的领导",
+      "C.反腐败斗争",
+      "D.思想建设"
+    ],
+    "answer": "B",
+    "explanation": "全面从严治党，核心是加强党的领导，基础在全面，关键在严，要害在治。"
+  },
+  {
+    "id": 59,
+    "type": "choice",
+    "topic": "新时代党的建设",
+    "stem": "党的根本性建设是（    ）",
+    "options": [
+      "A.思想建设",
+      "B.组织建设",
+      "C.政治建设",
+      "D.作风建设"
+    ],
+    "answer": "C",
+    "explanation": "党的政治建设是党的根本性建设。旗帜鲜明讲政治是我们党作为马克思主义政党的根本要求。"
+  },
+  {
+    "id": 60,
+    "type": "choice",
+    "topic": "社会主义生态文明",
+    "stem": "\"绿水青山就是金山银山\"体现的发展理念是（    ）",
+    "options": [
+      "A.创新发展",
+      "B.协调发展",
+      "C.开放发展",
+      "D.绿色发展"
+    ],
+    "answer": "D",
+    "explanation": "\"绿水青山就是金山银山\"体现了绿色发展理念，说明生态环境保护和经济发展是辩证统一、相辅相成的。"
+  },
+  {
+    "id": 61,
+    "type": "choice",
+    "topic": "习近平新时代中国特色社会主义思想",
+    "stem": "\"六个必须坚持\"中不包括（    ）",
+    "options": [
+      "A.坚持人民至上",
+      "B.坚持自信自立",
+      "C.坚持实事求是",
+      "D.坚持胸怀天下"
+    ],
+    "answer": "C",
+    "explanation": "\"六个必须坚持\"包括：坚持人民至上、坚持自信自立、坚持守正创新、坚持问题导向、坚持系统观念、坚持胸怀天下。不包括坚持实事求是。"
+  },
+  {
+    "id": 62,
+    "type": "choice",
+    "topic": "习近平新时代中国特色社会主义思想",
+    "stem": "习近平新时代中国特色社会主义思想是\"两个结合\"的重大成果，\"两个结合\"是指（    ）",
+    "options": [
+      "A.马克思主义基本原理同中国具体实际相结合、同中华优秀传统文化相结合",
+      "B.理论同实践相结合、历史同现实相结合",
+      "C.党的领导同人民当家作主相结合、依法治国同以德治国相结合",
+      "D.改革开放同四项基本原则相结合、经济建设同国防建设相结合"
+    ],
+    "answer": "A",
+    "explanation": "\"两个结合\"是指马克思主义基本原理同中国具体实际相结合、同中华优秀传统文化相结合。"
+  },
+  {
+    "id": 63,
+    "type": "choice",
+    "topic": "教育科技人才",
+    "stem": "全面建设社会主义现代化国家的基础性、战略性支撑是（    ）",
+    "options": [
+      "A.教育、科技、人才",
+      "B.经济、政治、文化",
+      "C.改革、发展、稳定",
+      "D.国防、外交、安全"
+    ],
+    "answer": "A",
+    "explanation": "教育、科技、人才是全面建设社会主义现代化国家的基础性、战略性支撑。"
+  },
+  {
+    "id": 64,
+    "type": "choice",
+    "topic": "全过程人民民主",
+    "stem": "我国的根本政治制度是（    ）",
+    "options": [
+      "A.中国共产党领导的多党合作和政治协商制度",
+      "B.民族区域自治制度",
+      "C.人民代表大会制度",
+      "D.基层群众自治制度"
+    ],
+    "answer": "C",
+    "explanation": "人民代表大会制度是我国的根本政治制度。中国共产党领导的多党合作和政治协商制度、民族区域自治制度、基层群众自治制度是我国的基本政治制度。"
+  },
+  {
+    "id": 65,
+    "type": "choice",
+    "topic": "全面从严治党",
+    "stem": "跳出历史周期率的第二个答案是（    ）",
+    "options": [
+      "A.发展经济",
+      "B.依法治国",
+      "C.党的自我革命",
+      "D.群众监督"
+    ],
+    "answer": "C",
+    "explanation": "党的自我革命是跳出历史周期率的第二个答案。勇于自我革命是中国共产党区别于其他政党的显著标志。"
+  },
+  {
+    "id": 66,
+    "type": "choice",
+    "topic": "中国特色大国外交",
+    "stem": "中国特色大国外交要服务的主线是（    ）",
+    "options": [
+      "A.维护世界和平",
+      "B.促进国际合作",
+      "C.服务民族复兴、促进人类进步",
+      "D.建立国际新秩序"
+    ],
+    "answer": "C",
+    "explanation": "中国特色大国外交牢牢把握服务民族复兴、促进人类进步这条主线。"
+  },
+  {
+    "id": 67,
+    "type": "choice",
+    "topic": "社会主义基本经济制度",
+    "stem": "社会主义基本经济制度中，按劳分配为主体、多种分配方式并存是由（    ）",
+    "options": [
+      "A.我国社会主义性质和基本国情决定的",
+      "B.市场经济规律决定的",
+      "C.国际经济环境决定的",
+      "D.生产力发展水平单独决定的"
+    ],
+    "answer": "A",
+    "explanation": "基本分配制度是由我国社会主义性质和基本国情决定的。"
+  },
+  {
+    "id": 68,
+    "type": "choice",
+    "topic": "全面依法治国",
+    "stem": "中国特色社会主义法治道路的基本原则不包括（    ）",
+    "options": [
+      "A.坚持中国共产党的领导",
+      "B.坚持以人民为中心",
+      "C.坚持三权分立",
+      "D.坚持依法治国和以德治国相结合"
+    ],
+    "answer": "C",
+    "explanation": "中国特色社会主义法治道路的基本原则包括：坚持中国共产党的领导、坚持以人民为中心、坚持法律面前人人平等、坚持依法治国和以德治国相结合、坚持从中国实际出发。不包括三权分立。"
+  },
+  {
+    "id": 69,
+    "type": "choice",
+    "topic": "社会主义文化建设",
+    "stem": "社会主义文化发展的\"二为\"方向是指（    ）",
+    "options": [
+      "A.为经济发展服务、为社会进步服务",
+      "B.为人民服务、为社会主义服务",
+      "C.为党的领导服务、为国家统一服务",
+      "D.为传统文化服务、为现代文明服务"
+    ],
+    "answer": "B",
+    "explanation": "坚持为人民服务、为社会主义服务的根本方向，是决定社会主义文化事业前途命运的关键。坚持百花齐放、百家争鸣，是繁荣发展社会主义文化的重要方针。"
+  },
+  {
+    "id": 70,
+    "type": "choice",
+    "topic": "国防和军队建设",
+    "stem": "党在新时代的强军目标中，决定军队建设政治方向的是（    ）",
+    "options": [
+      "A.能打胜仗",
+      "B.听党指挥",
+      "C.作风优良",
+      "D.纪律严明"
+    ],
+    "answer": "B",
+    "explanation": "听党指挥是灵魂，决定军队建设的政治方向；能打胜仗是核心，反映军队的根本职能；作风优良是保证，关系军队的性质、宗旨、本色。"
+  },
+  {
+    "id": 71,
+    "type": "essay",
+    "topic": "物质与意识",
+    "stem": "简述物质与意识的辩证关系。",
+    "answer": "（1）物质决定意识。意识是自然界长期发展的产物，是社会的产物，是人脑的机能，是客观世界的主观映象。\n（2）意识对物质具有能动反作用。意识活动具有目的性和计划性、创造性，具有指导实践改造客观世界的作用，具有调控人的行为和生理活动的作用。\n（3）主观能动性与客观规律性是辩证统一的。一方面，主观能动性依赖于客观规律性；另一方面，规律是客观的，不以人的意志为转移，人们既不能创造规律也不能消灭规律。"
+  },
+  {
+    "id": 72,
+    "type": "essay",
+    "topic": "对立统一规律",
+    "stem": "简述矛盾的普遍性和特殊性的辩证关系及其方法论意义。",
+    "answer": "（1）矛盾的普遍性是指矛盾存在于一切事物中，贯穿每一个事物发展过程的始终。矛盾的特殊性是指矛盾着的事物及其每一个侧面各有其特点。\n（2）矛盾的普遍性和特殊性的关系，也就是矛盾的共性和个性、一般和个别的关系。二者是辩证统一的：一方面，普遍性寓于特殊性之中，通过特殊性表现出来；另一方面，特殊性也离不开普遍性。\n（3）方法论意义：这一原理是马克思主义基本原理同各国具体实际相结合的哲学基础，也是建设中国特色社会主义的哲学基础。"
+  },
+  {
+    "id": 73,
+    "type": "essay",
+    "topic": "毛泽东思想",
+    "stem": "简述毛泽东思想的主要内容。",
+    "answer": "毛泽东思想的主要内容包括：\n（1）关于新民主主义革命的理论。\n（2）关于社会主义革命和社会主义建设的理论。\n（3）关于革命军队建设、军事战略和国防建设的理论。\n（4）关于政策和策略的理论。\n（5）关于思想政治工作和文化工作的理论。\n（6）关于党的建设的理论。"
+  },
+  {
+    "id": 74,
+    "type": "essay",
+    "topic": "新民主主义革命",
+    "stem": "简述新民主主义革命的总路线及其革命对象、动力和领导力量。",
+    "answer": "（1）新民主主义革命总路线：无产阶级领导的，人民大众的反帝、反封建、反官僚资本主义的革命。\n（2）革命对象：帝国主义、封建地主阶级、官僚资本主义。帝国主义是中国革命的首要对象。\n（3）革命动力：中国无产阶级是中国革命最基本的动力；农民是中国革命的主力军；城市小资产阶级是无产阶级可靠的同盟军；民族资产阶级也是革命的动力之一。\n（4）领导力量：新民主主义革命必须由无产阶级及其政党充当领导者。\n（5）革命性质：资产阶级民主革命。前途：社会主义。"
+  },
+  {
+    "id": 75,
+    "type": "essay",
+    "topic": "邓小平理论",
+    "stem": "简述社会主义本质论的科学内涵及其意义。",
+    "answer": "（1）社会主义本质的内涵：1992年初，邓小平在南方谈话中指出：\"社会主义的本质，是解放生产力，发展生产力，消灭剥削，消除两极分化，最终达到共同富裕。\"\n（2）意义：\n①这一科学概括既包括了社会主义社会的生产力问题，又包括了以社会主义生产关系为基础的社会关系问题，是一个有机的整体。\n②它突出地强调\"解放生产力，发展生产力\"，纠正了过去忽视生产力发展的错误观念。\n③它突出地强调\"消灭剥削，消除两极分化，最终达到共同富裕\"，阐明了社会主义社会的发展目标以及实现这个目标必须以解放和发展生产力为基础。\n④这一论断深化了对社会主义的认识，对于建设中国特色社会主义具有重大指导意义。"
+  },
+  {
+    "id": 76,
+    "type": "essay",
+    "topic": "中国式现代化",
+    "stem": "简述中国式现代化的中国特色和本质要求。",
+    "answer": "（1）中国式现代化的中国特色：\n①中国式现代化是人口规模巨大的现代化。\n②中国式现代化是全体人民共同富裕的现代化。\n③中国式现代化是物质文明和精神文明相协调的现代化。\n④中国式现代化是人与自然和谐共生的现代化。\n⑤中国式现代化是走和平发展道路的现代化。\n（2）中国式现代化的本质要求：坚持中国共产党领导，坚持中国特色社会主义，实现高质量发展，发展全过程人民民主，丰富人民精神世界，实现全体人民共同富裕，促进人与自然和谐共生，推动构建人类命运共同体，创造人类文明新形态。"
+  },
+  {
+    "id": 77,
+    "type": "essay",
+    "topic": "习近平新时代中国特色社会主义思想",
+    "stem": "简述习近平新时代中国特色社会主义思想的主要内容。",
+    "answer": "习近平新时代中国特色社会主义思想的主要内容包括\"十个明确\"\"十四个坚持\"\"十三个方面成就\"和\"六个必须坚持\"。\n（1）\"十个明确\"是习近平新时代中国特色社会主义思想最为核心的内容，涵盖了新时代坚持和发展中国特色社会主义的总目标、总任务、总体布局、战略布局和发展方向等基本问题。\n（2）\"十四个坚持\"是新时代坚持和发展中国特色社会主义的基本方略。\n（3）\"十三个方面成就\"概括了新时代党和国家事业取得的历史性成就、发生的历史性变革。\n（4）\"六个必须坚持\"是习近平新时代中国特色社会主义思想的世界观和方法论：坚持人民至上、坚持自信自立、坚持守正创新、坚持问题导向、坚持系统观念、坚持胸怀天下。\n这些内容内在贯通、有机统一，共同构成了习近平新时代中国特色社会主义思想的科学体系。"
+  },
+  {
+    "id": 78,
+    "type": "essay",
+    "topic": "新发展理念",
+    "stem": "简述新发展理念的基本内容及其各自的地位。",
+    "answer": "新发展理念包括创新、协调、绿色、开放、共享五大理念：\n（1）创新是引领发展的第一动力。\n（2）协调是持续健康发展的内在要求。\n（3）绿色是永续发展的必要条件和人民对美好生活追求的重要体现。\n（4）开放是国家繁荣富强的必由之路。\n（5）共享是中国特色社会主义的本质要求。\n新发展理念的实践要求：要从根本宗旨上把握新发展理念；要从问题导向上把握新发展理念；要从忧患意识上把握新发展理念。"
+  },
+  {
+    "id": 79,
+    "type": "essay",
+    "topic": "全面从严治党",
+    "stem": "简述新时代党的建设总要求和全面从严治党的内涵。",
+    "answer": "（1）全面从严治党的内涵：核心是加强党的领导，基础在全面，关键在严，要害在治。\n（2）新时代党的建设总要求：坚持和加强党的全面领导，坚持党要管党、全面从严治党，以加强党的长期执政能力建设、先进性和纯洁性建设为主线，以党的政治建设为统领，以坚定理想信念宗旨为根基，以调动全党积极性、主动性、创造性为着力点，全面推进党的政治建设、思想建设、组织建设、作风建设、纪律建设，把制度建设贯穿其中，深入推进反腐败斗争，不断提高党的建设质量。\n（3）反腐败斗争：坚持不敢腐、不能腐、不想腐一体推进。\"不敢\"是前提，\"不能\"是关键，\"不想\"是根本。\n（4）党的自我革命是跳出历史周期率的第二个答案。"
+  },
+  {
+    "id": 80,
+    "type": "essay",
+    "topic": "社会主义改造",
+    "stem": "简述我国对农业进行社会主义改造的基本经验和步骤。",
+    "answer": "（1）基本经验：\n①积极引导农民组织起来，走互助合作道路。\n②遵循自愿互利、典型示范和国家帮助的原则，以互助合作的优越性吸引农民走互助合作道路。\n③正确分析农村的阶级和阶层状况，制定正确的阶级政策。\n④坚持积极领导、稳步前进的方针，采取循序渐进的步骤。\n（2）步骤：互助组（具有社会主义萌芽性质）→初级农业生产合作社（具有半社会主义性质）→高级社（具有完全的社会主义性质）。到1956年底，农业社会主义改造基本完成。"
+  },
+  {
+    "id": 81,
+    "type": "essay",
+    "topic": "人类命运共同体",
+    "stem": "简述推动构建人类命运共同体的内涵和意义。",
+    "answer": "（1）推动构建人类命运共同体的内涵：建设持久和平的世界、普遍安全的世界、共同繁荣的世界、开放包容的世界、清洁美丽的世界。\n（2）意义：构建人类命运共同体理念顺应了历史潮流，回应了时代要求，凝聚了各国共识，为人类社会实现共同发展、持续繁荣、长治久安绘制了蓝图，对中国的和平发展、世界的繁荣进步都具有重大而深远的意义。\n（3）价值基础：推动构建人类命运共同体，必须弘扬全人类共同价值，坚持共商共建共享的全球治理观。"
+  }
+];
+
+// ===================== STATE =====================
+const topics = [...new Set(questions.map(q => q.topic))];
+let answered = {};
+let wrongIds = new Set();
+let order = "rand";
+let shuffled = [];
+let activeTab = "全部";
+let showAll = false;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function init() {
+  document.getElementById("totalQ").textContent = questions.length;
+  document.getElementById("totalChoice").textContent = questions.filter(q=>q.type==="choice").length;
+  document.getElementById("totalEssay").textContent = questions.filter(q=>q.type==="essay").length;
+  document.getElementById("statTotal").textContent = questions.length;
+  buildTabs();
+  reshuffle();
+  render();
+}
+
+function buildTabs() {
+  const bar = document.getElementById("tabBar");
+  bar.innerHTML = "";
+  const allTab = ["全部", ...topics];
+  allTab.forEach(t => {
+    const btn = document.createElement("button");
+    btn.className = "tab-item" + (t === activeTab ? " active" : "");
+    btn.textContent = t;
+    btn.onclick = () => { activeTab = t; buildTabs(); render(); };
+    bar.appendChild(btn);
+  });
+}
+
+function reshuffle() {
+  if (order === "rand") {
+    shuffled = shuffle(questions);
+  } else {
+    shuffled = [...questions];
+  }
+}
+
+function setOrder(o) {
+  order = o;
+  document.getElementById("btnSeq").classList.toggle("active", o === "seq");
+  document.getElementById("btnRand").classList.toggle("active", o === "rand");
+  reshuffle();
+  render();
+}
+
+function render() {
+  const list = document.getElementById("questionList");
+  const review = document.getElementById("reviewPanel");
+  review.style.display = "none";
+  list.innerHTML = "";
+
+  const visible = order === "rand" ? shuffled : questions;
+  const filtered = activeTab === "全部" ? visible : visible.filter(q => q.topic === activeTab);
+
+  let lastTopic = "";
+  filtered.forEach(q => {
+    if (activeTab === "全部" && q.topic !== lastTopic) {
+      lastTopic = q.topic;
+      const label = document.createElement("div");
+      label.className = "topic-label";
+      label.textContent = "📚 " + q.topic;
+      list.appendChild(label);
+    }
+    list.appendChild(buildCard(q, false));
+  });
+}
+
+function buildCard(q, isReview) {
+  const card = document.createElement("div");
+  card.className = "question-card" + (isReview ? " review-card" : "");
+  card.id = "q-" + q.id + (isReview ? "-r" : "");
+  const ans = answered[q.id];
+
+  const header = document.createElement("div");
+  header.className = "q-header";
+  header.innerHTML = '<span class="q-id">第 ' + q.id + ' 题</span><span class="q-type ' + q.type + '">' + (q.type === 'choice' ? '选择题' : '简答题') + ' · ' + q.topic + '</span>';
+  card.appendChild(header);
+
+  const body = document.createElement("div");
+  body.className = "q-body";
+
+  const stem = document.createElement("div");
+  stem.className = "q-stem";
+  stem.textContent = q.stem;
+  body.appendChild(stem);
+
+  if (q.type === "choice") {
+    const optWrap = document.createElement("div");
+    optWrap.className = "q-options";
+    q.options.forEach(opt => {
+      const item = document.createElement("div");
+      item.className = "option-item";
+      const letter = opt.charAt(0);
+      if (ans) {
+        if (letter === q.answer) item.classList.add("correct");
+        if (ans.userAnswer === letter && letter !== q.answer) item.classList.add("wrong");
+      } else if (!isReview) {
+        item.onclick = () => selectOption(q.id, letter, card, q);
+      }
+      item.innerHTML = '<div class="option-radio"></div><div>' + opt + '</div>';
+      optWrap.appendChild(item);
+    });
+    body.appendChild(optWrap);
+  } else {
+    const tw = document.createElement("div");
+    tw.className = "q-textarea-wrap";
+    const ta = document.createElement("textarea");
+    ta.placeholder = "请输入你的答案...";
+    ta.id = "ta-" + q.id + (isReview ? "-r" : "");
+    if (ans) ta.value = ans.userAnswer;
+    tw.appendChild(ta);
+    body.appendChild(tw);
+  }
+
+  card.appendChild(body);
+
+  if (ans) {
+    const ri = document.createElement("div");
+    ri.className = "result-indicator show " + (ans.correct ? "correct" : "wrong");
+    ri.textContent = ans.correct ? "✅ 回答正确！" : "❌ 回答错误";
+    card.appendChild(ri);
+  }
+
+  const actions = document.createElement("div");
+  actions.className = "q-actions";
+  if (q.type === "essay" && !ans) {
+    const btnSubmit = document.createElement("button");
+    btnSubmit.className = "btn btn-primary";
+    btnSubmit.textContent = "提交答案";
+    btnSubmit.onclick = () => submitEssay(q.id, card, q);
+    actions.appendChild(btnSubmit);
+  }
+  const btnShow = document.createElement("button");
+  btnShow.className = "btn btn-success";
+  btnShow.textContent = "显示答案";
+  btnShow.onclick = () => toggleAnswer(q.id, card);
+  actions.appendChild(btnShow);
+  card.appendChild(actions);
+
+  const answerDiv = document.createElement("div");
+  answerDiv.className = "q-answer" + (showAll ? " show" : "");
+  answerDiv.id = "ans-" + q.id + (isReview ? "-r" : "");
+  const box = document.createElement("div");
+  box.className = "answer-box";
+  if (q.type === "choice") {
+    box.innerHTML = '<div class="label">正确答案</div><div class="content"><strong>' + q.answer + '</strong></div><div class="label" style="margin-top:10px">解析</div><div class="content">' + q.explanation + '</div>';
+  } else {
+    box.innerHTML = '<div class="label">参考答案</div><div class="content">' + q.answer.replace(/\n/g, '<br>') + '</div>';
+  }
+  answerDiv.appendChild(box);
+  card.appendChild(answerDiv);
+
+  return card;
+}
+
+function selectOption(qid, letter, card, q) {
+  if (answered[qid]) return;
+  const correct = letter === q.answer;
+  answered[qid] = { userAnswer: letter, correct };
+  if (!correct) wrongIds.add(qid); else wrongIds.delete(qid);
+  updateStats();
+  render();
+  showAns(qid, card);
+}
+
+function submitEssay(qid, card, q) {
+  const ta = document.getElementById("ta-" + qid);
+  if (!ta || !ta.value.trim()) { alert("请先输入你的答案"); return; }
+  answered[qid] = { userAnswer: ta.value.trim(), correct: true };
+  updateStats();
+  render();
+  showAns(qid, card);
+}
+
+function toggleAnswer(qid, card) {
+  const el = card.querySelector(".q-answer");
+  el.classList.toggle("show");
+}
+
+function showAns(qid, card) {
+  const el = card.querySelector(".q-answer");
+  if (el) el.classList.add("show");
+}
+
+function toggleShowAll() {
+  showAll = !showAll;
+  const btn = document.getElementById("btnShowAll");
+  btn.classList.toggle("active", showAll);
+  btn.textContent = showAll ? "👁 隐藏所有答案" : "👁 全部显示答案";
+  document.querySelectorAll(".q-answer").forEach(el => {
+    el.classList.toggle("show", showAll);
+  });
+}
+
+function updateStats() {
+  const total = questions.length;
+  const answeredCount = Object.keys(answered).length;
+  const correctCount = Object.values(answered).filter(a => a.correct).length;
+  const accuracy = answeredCount > 0 ? Math.round(correctCount / answeredCount * 100) : 0;
+
+  document.getElementById("statAnswered").textContent = answeredCount;
+  document.getElementById("statAccuracy").textContent = accuracy + "%";
+  document.getElementById("statWrong").textContent = wrongIds.size;
+  document.getElementById("wrongCount").textContent = wrongIds.size;
+
+  const pct = total > 0 ? answeredCount / total : 0;
+  const circ = 175.93;
+  document.getElementById("ringFill").style.strokeDashoffset = circ * (1 - pct);
+  document.getElementById("ringText").textContent = Math.round(pct * 100) + "%";
+}
+
+function showReview() {
+  const list = document.getElementById("questionList");
+  const review = document.getElementById("reviewPanel");
+  list.innerHTML = "";
+  review.style.display = "block";
+  review.innerHTML = "";
+
+  if (wrongIds.size === 0) {
+    review.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-secondary)"><p style="font-size:48px;margin-bottom:12px">🎉</p><p style="font-size:16px;font-weight:600">太棒了！没有错题！</p></div>';
+    return;
+  }
+
+  const title = document.createElement("div");
+  title.className = "topic-label";
+  title.textContent = "📌 错题回顾（共 " + wrongIds.size + " 题）";
+  review.appendChild(title);
+
+  wrongIds.forEach(qid => {
+    const q = questions.find(x => x.id === qid);
+    if (q) review.appendChild(buildCard(q, true));
+  });
+}
+
+function resetAll() {
+  if (!confirm("确定要重置所有答题记录吗？")) return;
+  answered = {};
+  wrongIds.clear();
+  showAll = false;
+  document.getElementById("btnShowAll").classList.remove("active");
+  document.getElementById("btnShowAll").textContent = "👁 全部显示答案";
+  updateStats();
+  reshuffle();
+  render();
+}
+
+function scrollToNext() {
+  const cards = document.querySelectorAll(".question-card:not(.hidden)");
+  for (const card of cards) {
+    const rect = card.getBoundingClientRect();
+    if (rect.top > 160) {
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+  }
+}
+
+window.addEventListener("scroll", () => {
+  document.getElementById("scrollTopBtn").classList.toggle("show", window.scrollY > 400);
+});
+
+init();
+</script>
+</body>
+</html>
