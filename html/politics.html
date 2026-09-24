@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>政治 - 考点速记本</title>
+<style>
+:root {
+  --primary: #1565c0;
+  --primary-light: #e3f2fd;
+  --primary-dark: #0d47a1;
+  --accent: #ff6f00;
+  --accent-light: #fff3e0;
+  --success: #2e7d32;
+  --success-light: #e8f5e9;
+  --bg: #f5f5f5;
+  --card: #ffffff;
+  --text: #212121;
+  --text-sec: #616161;
+  --border: #e0e0e0;
+  --sidebar-w: 280px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--card);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 200;
+  transition: transform 0.3s;
+  padding: 16px 0;
+}
+.sidebar-header {
+  padding: 12px 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+.sidebar-header h2 {
+  font-size: 16px;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.search-box {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.search-box:focus { border-color: var(--primary); }
+.nav-group { margin-bottom: 4px; }
+.nav-part {
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--primary-dark);
+  cursor: pointer;
+  background: var(--primary-light);
+  border-left: 3px solid var(--primary);
+}
+.nav-part:hover { background: #bbdefb; }
+.nav-chapter {
+  padding: 8px 20px 8px 32px;
+  font-size: 13px;
+  color: var(--text-sec);
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+.nav-chapter:hover { background: #f5f5f5; color: var(--text); }
+.nav-chapter.active { color: var(--primary); font-weight: 600; border-left-color: var(--primary); background: var(--primary-light); }
+
+/* Main content */
+.main {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+}
+.top-bar {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  padding: 16px 24px;
+  z-index: 210;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.top-bar h1 { font-size: 20px; flex: 1; }
+.top-bar .btn-group { display: flex; gap: 8px; }
+.tb-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.tb-btn:hover { background: rgba(255,255,255,0.3); }
+.tb-btn.active { background: #fff; color: var(--primary); }
+.content-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 28px 80px;
+}
+
+/* Part headers */
+.part-header {
+  background: linear-gradient(135deg, var(--primary-light) 0%, #e8eaf6 100%);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 32px 0 16px;
+  border-left: 5px solid var(--primary);
+}
+.part-header h2 {
+  font-size: 22px;
+  color: var(--primary-dark);
+  margin: 0;
+}
+
+/* Chapter sections */
+.chapter-section {
+  margin: 16px 0;
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+.chapter-header {
+  padding: 16px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.2s;
+  user-select: none;
+}
+.chapter-header:hover { background: #fafafa; }
+.chapter-toggle {
+  font-size: 12px;
+  color: var(--text-sec);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+.chapter-header.open .chapter-toggle { transform: rotate(90deg); }
+.chapter-header h3 {
+  font-size: 17px;
+  color: var(--text);
+  margin: 0;
+  font-weight: 600;
+}
+.chapter-content {
+  padding: 0 20px 20px;
+  border-top: 1px solid var(--border);
+}
+
+/* Content styles */
+h4.section-title {
+  font-size: 15px;
+  color: var(--primary-dark);
+  margin: 20px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--primary-light);
+}
+.star-point h5 {
+  font-size: 14px;
+  color: var(--accent);
+  margin: 16px 0 8px;
+}
+.sub-section {
+  font-size: 14px;
+  color: var(--text-sec);
+  margin: 12px 0 6px;
+}
+ol, ul {
+  padding-left: 24px;
+  margin: 8px 0;
+}
+li {
+  margin: 4px 0;
+  font-size: 14px;
+}
+li.sub-item { padding-left: 12px; }
+li strong { color: var(--primary-dark); }
+
+.memory-aid {
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  padding: 10px 16px;
+  margin: 10px 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  color: #e65100;
+}
+.memory-aid strong { color: #bf360c; }
+
+.quote-box {
+  background: #f3e5f5;
+  border-left: 4px solid #7b1fa2;
+  padding: 10px 16px;
+  margin: 10px 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+}
+.note-box {
+  background: #e8f5e9;
+  border-left: 4px solid var(--success);
+  padding: 10px 16px;
+  margin: 10px 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.md-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 13px;
+}
+.md-table th {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid var(--border);
+}
+.md-table td {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+}
+.md-table tr:nth-child(even) td { background: #fafafa; }
+
+p {
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+/* Table scroll wrapper */
+.md-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border-radius: 8px;
+}
+
+/* Mobile sidebar backdrop */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.4);
+  z-index: 190;
+}
+.sidebar-backdrop.show { display: block; }
+
+/* Flashcard overlay */
+.flashcard-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.6);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+}
+.flashcard-overlay.show { display: flex; }
+.flashcard {
+  background: var(--card);
+  border-radius: 20px;
+  width: 90%;
+  max-width: 560px;
+  min-height: 300px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.flashcard-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #f5f5f5;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flashcard-close:hover { background: #e0e0e0; }
+.flashcard-context {
+  font-size: 13px;
+  color: var(--text-sec);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.flashcard-text {
+  font-size: 18px;
+  line-height: 1.8;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #e65100;
+  font-weight: 600;
+  padding: 20px 0;
+}
+.flashcard-text strong { color: #bf360c; }
+.flashcard-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.flashcard-nav button {
+  padding: 10px 24px;
+  border-radius: 10px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.flashcard-nav button:hover { border-color: var(--primary); color: var(--primary); }
+.flashcard-counter {
+  font-size: 14px;
+  color: var(--text-sec);
+  font-weight: 600;
+}
+.flashcard-shuffle {
+  padding: 10px 24px;
+  border-radius: 10px;
+  border: 2px solid var(--accent);
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+.flashcard-shuffle:hover { background: var(--accent); color: #fff; }
+
+/* Search highlight */
+mark { background: #fff176; padding: 0 2px; border-radius: 2px; }
+
+/* Mobile */
+.menu-toggle {
+  display: none;
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .sidebar { transform: translateX(-100%); width: 85vw; max-width: 320px; padding-top: 8px; }
+  .sidebar.open { transform: translateX(0); box-shadow: 4px 0 20px rgba(0,0,0,0.2); }
+  .main { margin-left: 0; }
+  .menu-toggle { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+  /* Top bar: stack on very small screens */
+  .top-bar {
+    flex-wrap: wrap;
+    padding: 12px 14px;
+    gap: 8px;
+  }
+  .top-bar h1 { font-size: 15px; flex: 1 1 auto; min-width: 0; }
+  .top-bar .btn-group {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .tb-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+    flex: 1;
+    text-align: center;
+    min-width: 0;
+  }
+
+  /* Content */
+  .content-wrap { padding: 12px 10px 80px; }
+
+  /* Part headers */
+  .part-header { padding: 14px 16px; margin: 20px 0 12px; border-radius: 10px; }
+  .part-header h2 { font-size: 17px; }
+
+  /* Chapter sections */
+  .chapter-section { border-radius: 10px; margin: 10px 0; }
+  .chapter-header { padding: 12px 14px; }
+  .chapter-header h3 { font-size: 15px; }
+  .chapter-content { padding: 0 14px 14px; }
+
+  /* Content elements */
+  h4.section-title { font-size: 14px; margin: 14px 0 8px; }
+  .star-point h5 { font-size: 13px; }
+  ol, ul { padding-left: 20px; }
+  li { font-size: 13px; }
+
+  /* Tables: horizontal scroll */
+  .md-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 10px -6px;
+    padding: 0 6px;
+  }
+  .md-table { min-width: 500px; font-size: 12px; }
+  .md-table th, .md-table td { padding: 6px 8px; }
+
+  /* Memory aid */
+  .memory-aid { padding: 8px 12px; font-size: 13px; margin: 8px 0; }
+  .quote-box, .note-box { padding: 8px 12px; font-size: 13px; margin: 8px 0; }
+
+  /* Flashcard */
+  .flashcard { padding: 20px 16px; min-height: 220px; width: 95%; border-radius: 16px; }
+  .flashcard-context { font-size: 12px; }
+  .flashcard-text { font-size: 15px; padding: 12px 0; }
+  .flashcard-nav { flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .flashcard-nav button { padding: 8px 16px; font-size: 13px; }
+  .flashcard-counter { width: 100%; text-align: center; }
+  .flashcard-shuffle { margin-left: 0; }
+}
+
+/* Extra small phones */
+@media (max-width: 400px) {
+  .top-bar { padding: 10px 10px; }
+  .top-bar h1 { font-size: 14px; }
+  .tb-btn { padding: 5px 8px; font-size: 11px; }
+  .content-wrap { padding: 10px 8px 70px; }
+  .chapter-header h3 { font-size: 14px; }
+  .md-table { min-width: 420px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Sidebar backdrop for mobile -->
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeSidebar()"></div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <h2 style="margin:0">📚 考点导航</h2>
+      <button onclick="closeSidebar()" style="background:none;border:none;font-size:22px;cursor:pointer;padding:4px 8px;color:#616161">✕</button>
+    </div>
+    <input type="text" class="search-box" id="searchBox" placeholder="搜索考点关键词..." oninput="doSearch(this.value)">
+  </div>
+  <div id="navTree">
+    <div class="nav-group">
+      <div class="nav-part" onclick="scrollToPart('part1')">第一部分 马克思主义哲学原理</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 0)">第一章 哲学是科学的世界观</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 1)">第二章 世界多样性与物质统一性</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 2)">第三章 普遍联系和变化发展</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 3)">第四章 实践与认识</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 4)">第五章 历史观基本问题</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 5)">第六章 社会历史发展动力</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 6)">📋 第一部分高频考点速览</div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-part" onclick="scrollToPart('part2')">第二部分 毛泽东思想和中国特色社会主义</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 7)">第一章 马克思主义中国化时代化</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 8)">第二章 毛泽东思想及其历史地位</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 9)">第三章 新民主主义革命理论</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 10)">第四章 社会主义改造理论</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 11)">第五章 社会主义建设道路探索</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 12)">第六章 中国特色社会主义理论体系</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 13)">第七章 邓小平理论</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 14)">第八章 "三个代表"重要思想</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 15)">第九章 科学发展观</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 16)">📋 第二部分高频考点速览</div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-part" onclick="scrollToPart('part3')">第三部分 习近平新时代中国特色社会主义</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 17)">第一章 习近平新时代思想创立</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 18)">第二章 坚持和发展中国特色社会主义</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 19)">第三章 中国式现代化</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 20)">第四章 坚持党的全面领导</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 21)">第五章 坚持以人民为中心</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 22)">第六章 全面深化改革开放</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 23)">第七章 推动高质量发展</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 24)">第八章 教育科技人才战略</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 25)">第九章 全过程人民民主</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 26)">第十章 全面依法治国</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 27)">第十一章 建设文化强国</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 28)">第十二章 保障改善民生</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 29)">第十三章 建设生态文明</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 30)">第十四章 维护国家安全</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 31)">第十五章 国防和军队</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 32)">第十六章 "一国两制"与统一</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 33)">第十七章 大国外交与人类命运共同体</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 34)">第十八章 全面从严治党</div>
+      <div class="nav-chapter" onclick="scrollToChapter(this, 35)">📋 第三部分高频考点速览</div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-part" onclick="scrollToPart('exam')">📝 考试形式与分值</div>
+    </div>
+  </div>
+</div>
+
+<!-- Main -->
+<div class="main">
+  <div class="top-bar">
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+    <h1>成考专升本政治 · 考点速记本</h1>
+    <div class="btn-group">
+      <button class="tb-btn" onclick="expandAll()">📖 全部展开</button>
+      <button class="tb-btn" onclick="collapseAll()">📕 全部收起</button>
+      <button class="tb-btn" onclick="openFlashcard()">🃏 口诀闪卡</button>
+    </div>
+  </div>
+  <div class="content-wrap" id="contentWrap">
+    <div class="part-header" id="part1"><h2>第一部分 马克思主义哲学原理</h2></div>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第一章 马克思主义哲学是科学的世界观和方法论</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、哲学及其基本问题</h4>
+<ol>
+<li><strong>世界观</strong>：人们关于整个世界的总的、根本的观点和看法</li>
+<li><strong>哲学</strong>：系统化、理论化的世界观</li>
+<li><strong>方法论</strong>：关于认识世界和改造世界的根本方法的理论</li>
+<li>哲学是关于<strong>自然、社会和思维</strong>知识的概括和总结</li>
+<li>哲学与具体学科的关系：<strong>普遍与特殊</strong>的对立统一；<strong>指导与基础</strong>的对立统一</li>
+<li>哲学是<strong>世界观和方法论的统一体</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>哲学 = 系统化的世界观 + 方法论的统一</strong></div>
+<div class="star-point"><h5>⭐ 哲学基本问题（考点2）</h5></div>
+<ul>
+<li>恩格斯提出：全部哲学的基本问题是<strong>思维和存在的关系问题</strong></li>
+<li><strong>第一方面</strong>：存在和思维何为<strong>本原</strong>（第一性）→ 划分<strong>唯物主义和唯心主义</strong>的根本标准</li>
+<li><strong>第二方面</strong>：思维和存在有无<strong>同一性</strong> → 划分<strong>可知论和不可知论</strong>的根本标准</li>
+</ul>
+<div class="memory-aid">💡 <strong>哲学基本问题两方面 → &#x27;本原 + 同一性&#x27;</strong></div>
+<div class="memory-aid">💡 第一方面 = 唯物vs唯心；第二方面 = 可知vs不可知</div>
+<div class="star-point"><h5>⭐ 哲学主要派别（考点3）</h5></div>
+<p>📊 <strong>唯物主义 vs 唯心主义</strong></p>
+<table class="md-table">
+<tr><th>派别</th><th>含义</th><th>具体形态</th></tr>
+<tr><td><strong>唯物主义</strong></td><td>物质第一性，意识第二性</td><td>①古代朴素唯物主义 ②近代形而上学唯物主义 ③辩证唯物主义</td></tr>
+<tr><td><strong>唯心主义</strong></td><td>意识第一性，物质第二性</td><td>①主观唯心主义 ②客观唯心主义</td></tr>
+</table>
+<div class="memory-aid">💡 <strong>三种唯物主义 → &#x27;古朴→近形→辩证&#x27;</strong></div>
+<p>📊 <strong>辩证法 vs 形而上学</strong></p>
+<table class="md-table">
+<tr><th>项目</th><th>辩证法</th><th>形而上学</th></tr>
+<tr><td>观点</td><td>普遍联系、变化发展</td><td>孤立、静止不变</td></tr>
+<tr><td>矛盾</td><td>承认矛盾是事物发展的动力和源泉</td><td>否认内部矛盾</td></tr>
+<tr><td>根本分歧</td><td><strong>是否承认矛盾</strong></td><td>—</td></tr>
+</table>
+<div class="memory-aid">💡 <strong>辩证法vs形而上学的根本分歧 = 是否承认矛盾</strong></div>
+<h4 class="section-title">二、马克思主义哲学的基本特征</h4>
+<ol>
+<li><strong>实践性</strong>——首要的、最基本的、最显著的特征</li>
+<li><strong>阶级性</strong></li>
+<li><strong>科学性</strong></li>
+<li><strong>创新性</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>四大特征 → &#x27;实阶科创&#x27;，实践性是基础</strong></div>
+<div class="memory-aid">💡 四者有机统一，实践性是核心基础</div>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第二章 世界多样性与物质统一性</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、物质及其存在方式</h4>
+<div class="star-point"><h5>⭐ 哲学的物质范畴（考点1）</h5></div>
+<ul>
+<li>物质是<strong>不依赖于意识</strong>又能为意识所反映的<strong>客观实在</strong></li>
+<li>物质的<strong>唯一特性</strong>：<strong>客观实在性</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>物质唯一特性 = 客观实在性</strong>（不是运动！运动是根本属性）</div>
+<div class="star-point"><h5>⭐ 物质的存在方式（考点2）</h5></div>
+<ol>
+<li>物质的<strong>根本属性</strong>是<strong>运动</strong></li>
+<li><strong>时间和空间</strong>是物质运动的存在形式</li>
+</ol>
+<ul>
+<li><strong>时间</strong>：持续性、顺序性，特点——<strong>一维性</strong></li>
+<li><strong>空间</strong>：广延性、伸张性，特点——<strong>三维性</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>时间一维、空间三维</strong></div>
+<div class="memory-aid">💡 唯一特性≠根本属性：唯一特性=客观实在性；根本属性=运动</div>
+<h4 class="section-title">二、物质与意识的辩证关系</h4>
+<div class="star-point"><h5>⭐ 物质决定意识（考点1）</h5></div>
+<ol>
+<li>意识是<strong>自然界长期发展</strong>的产物</li>
+<li>意识是<strong>社会</strong>的产物</li>
+<li>意识是<strong>人脑的机能</strong>，人脑是意识的<strong>物质器官</strong></li>
+<li>意识是<strong>客观世界的主观映象</strong>——主观与客观的统一</li>
+</ol>
+<div class="memory-aid">💡 意识产生：自然界产物 + 社会产物 → 人脑机能 → 客观世界的主观映象</div>
+<div class="star-point"><h5>⭐ 意识对物质的反作用（考点2）</h5></div>
+<p>意识的能动作用四方面：</p>
+<ol>
+<li>意识活动具有<strong>目的性和计划性</strong></li>
+<li>意识活动具有<strong>创造性</strong></li>
+<li>意识具有<strong>指导实践改造客观世界</strong>的作用</li>
+<li>意识具有<strong>调控人的行为和生理活动</strong>的作用</li>
+</ol>
+<div class="memory-aid">💡 <strong>意识能动作用 → &#x27;目计创改调&#x27;（目的性、计划性、创造性、改造、调控）</strong></div>
+<div class="star-point"><h5>⭐ 主观能动性与客观规律性的统一（考点3）</h5></div>
+<ul>
+<li>主观能动性<strong>依赖于</strong>客观规律性</li>
+<li>规律是<strong>客观的</strong>，人不能创造或消灭规律</li>
+</ul>
+<p>正确发挥主观能动性的<strong>前提和条件</strong>：</p>
+<ol>
+<li>前提：<strong>从一切实际出发</strong></li>
+<li>基本途径：<strong>实践</strong></li>
+<li>依赖一定的<strong>物质条件和物质手段</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>前提 = 从实际出发；途径 = 实践；条件 = 物质手段</strong></div>
+<h4 class="section-title">三、世界的物质统一性</h4>
+<ul>
+<li>世界是物质的世界，世界的<strong>真正统一性</strong>就在于它的<strong>物质性</strong></li>
+</ul>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第三章 事物的普遍联系和变化发展</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、联系和发展的普遍性</h4>
+<div class="star-point"><h5>⭐ 事物的普遍联系（考点1）</h5></div>
+<ul>
+<li><strong>联系和发展</strong>是唯物辩证法的<strong>总观点和总特征</strong></li>
+<li>联系的特点：<strong>客观性、普遍性、多样性和条件性</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>联系四特征 → &#x27;客普多条&#x27;</strong></div>
+<div class="star-point"><h5>⭐ 事物的变化发展（考点2）</h5></div>
+<ul>
+<li>发展的<strong>实质</strong>：前进和上升，新事物产生和旧事物灭亡</li>
+</ul>
+<h4 class="section-title">二、唯物辩证法的基本规律</h4>
+<div class="star-point"><h5>⭐ 对立统一规律（考点1）——唯物辩证法的实质和核心</h5></div>
+<ul>
+<li><strong>对立统一规律</strong>是唯物辩证法的<strong>实质和核心</strong></li>
+<li>提供了认识世界和改造世界的<strong>根本方法</strong>——<strong>矛盾分析方法</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>实质和核心 = 对立统一规律</strong>（不是否定之否定！）</div>
+<p><strong>矛盾的同一性和斗争性：</strong></p>
+<ul>
+<li><strong>同一性</strong>：矛盾双方<strong>相互吸引、相互连结</strong></li>
+<li><strong>斗争性</strong>：矛盾双方<strong>相互排斥、相互对立</strong></li>
+</ul>
+<div class="memory-aid">💡 同一性 = 吸引连结；斗争性 = 排斥对立</div>
+<p><strong>矛盾的普遍性和特殊性：</strong></p>
+<ul>
+<li>普遍性：矛盾<strong>存在于一切事物中</strong>，贯穿始终</li>
+<li>特殊性：矛盾着的事物及其<strong>每一个侧面各有其特点</strong></li>
+<li>关系 = <strong>共性与个性、一般与个别</strong>的关系</li>
+</ul>
+<div class="memory-aid">💡 <strong>普遍性与特殊性 = 共性与个性</strong></div>
+<p><strong>主要矛盾和次要矛盾：</strong></p>
+<ul>
+<li>主要矛盾：<strong>支配地位</strong>、<strong>决定作用</strong></li>
+<li>次要矛盾：<strong>从属地位</strong>、不起决定作用</li>
+<li>二者<strong>相互依赖、相互影响</strong>，在一定条件下<strong>相互转化</strong></li>
+</ul>
+<p><strong>矛盾的主要方面和次要方面：</strong></p>
+<ul>
+<li>事物的<strong>性质</strong>由<strong>主要矛盾的主要方面</strong>所规定</li>
+</ul>
+<div class="memory-aid">💡 <strong>事物性质 → 由主要矛盾的主要方面规定</strong></div>
+<div class="star-point"><h5>⭐ 量变质变规律（考点2）</h5></div>
+<ul>
+<li><strong>量变</strong>是质变的<strong>必要准备</strong></li>
+<li><strong>质变</strong>是量变的<strong>必然结果</strong></li>
+<li>量变和质变<strong>相互渗透</strong></li>
+</ul>
+<p>方法论意义：</p>
+<ol>
+<li>定性研究与定量研究结合</li>
+<li>掌握<strong>适度原则</strong></li>
+<li>重视点滴积累 + 抓住机遇</li>
+</ol>
+<div class="memory-aid">💡 <strong>量变→必要准备；质变→必然结果</strong></div>
+<div class="star-point"><h5>⭐ 否定之否定规律（考点3）</h5></div>
+<p>辩证否定观的基本内容：</p>
+<ol>
+<li>是事物发展的<strong>自我否定</strong></li>
+<li>是事物发展的<strong>环节</strong></li>
+<li>是新旧事物联系的<strong>环节</strong></li>
+<li>实质是<strong>&quot;扬弃&quot;</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>辩证否定 = 自我否定 + 发展环节 + 联系环节 + 扬弃</strong></div>
+<div class="memory-aid">💡 发展趋势和道路 = <strong>前进性与曲折性的统一</strong></div>
+<h4 class="section-title">三、联系和发展的基本环节</h4>
+<p>五对范畴（均为<strong>对立统一</strong>关系）：</p>
+<table class="md-table">
+<tr><th>序号</th><th>范畴</th><th>关键词</th></tr>
+<tr><td>1</td><td><strong>内容与形式</strong></td><td>内容决定形式，形式反作用于内容</td></tr>
+<tr><td>2</td><td><strong>本质与现象</strong></td><td>透过现象认识本质</td></tr>
+<tr><td>3</td><td><strong>原因与结果</strong></td><td>科学研究的前提</td></tr>
+<tr><td>4</td><td><strong>必然与偶然</strong></td><td>探索必然性，利用偶然性</td></tr>
+<tr><td>5</td><td><strong>现实与可能</strong></td><td>从现实出发，把握多种可能</td></tr>
+</table>
+<div class="memory-aid">💡 <strong>五对范畴 → &#x27;内本因必现&#x27;（内容、本质、原因、必然、现实）</strong></div>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第四章 实践与认识及其发展规律</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、实践与认识</h4>
+<div class="star-point"><h5>⭐ 科学的实践观（考点1-2）</h5></div>
+<ul>
+<li><strong>实践</strong>：人类能动地改造世界的<strong>社会性的物质活动</strong></li>
+<li>实践的基本特点：<strong>客观物质性、自觉能动性、社会历史性</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>实践三特点 → &#x27;客自社&#x27;（客观物质性、自觉能动性、社会历史性）</strong></div>
+<ul>
+<li>实践的基本形式：<strong>物质生产实践、社会政治实践、科学文化实践</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>实践三形式 → &#x27;物社科&#x27;</strong></div>
+<ul>
+<li>实践的结构：<strong>主体</strong>（人）—<strong>客体</strong>（对象）—<strong>中介</strong>（工具手段）</li>
+</ul>
+<div class="star-point"><h5>⭐ 认识的本质与过程（考点3）</h5></div>
+<ol>
+<li><strong>感性认识</strong>→<strong>理性认识</strong> = 认识的<strong>第一次飞跃</strong></li>
+<li><strong>理性认识</strong>→<strong>实践</strong> = 认识的<strong>第二次飞跃</strong></li>
+</ol>
+<p>感性认识与理性认识的辩证统一：</p>
+<ul>
+<li>感性认识有待于<strong>发展深化为</strong>理性认识</li>
+<li>理性认识<strong>依赖于</strong>感性认识</li>
+<li>二者<strong>相互渗透、相互包含</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>两次飞跃：感性→理性（第一次）；理性→实践（第二次）</strong></div>
+<p>从理性认识到实践飞跃的条件：</p>
+<ol>
+<li>理性认识本身<strong>正确</strong></li>
+<li>与<strong>具体实践</strong>相结合</li>
+<li>为<strong>群众</strong>所掌握</li>
+<li>有一定的<strong>物质条件和手段</strong></li>
+</ol>
+<div class="star-point"><h5>⭐ 实践与认识的辩证运动规律（考点4）</h5></div>
+<p>实践→认识→再实践→再认识，<strong>循环往复以至无穷</strong></p>
+<div class="memory-aid">💡 <strong>实践→认识→再实践→再认识 = 知行统一观</strong></div>
+<h4 class="section-title">二、真理与价值</h4>
+<div class="star-point"><h5>⭐ 真理的客观性、绝对性和相对性（考点1）</h5></div>
+<ul>
+<li><strong>真理</strong>：标志主观与客观相符合的哲学范畴</li>
+<li><strong>客观性</strong>：凡真理都是客观真理——真理问题上的<strong>唯物论</strong></li>
+<li><strong>绝对性与相对性</strong>：任何真理都是绝对性与相对性的统一</li>
+</ul>
+<div class="memory-aid">💡 <strong>真理客观性 = 唯物论问题；绝对性与相对性 = 辩证法问题</strong></div>
+<div class="star-point"><h5>⭐ 真理的检验标准（考点2）</h5></div>
+<ul>
+<li><strong>实践是检验真理的唯一标准</strong></li>
+<li>实践标准的<strong>确定性</strong>（绝对性）：由客观性和唯一性决定</li>
+<li>实践标准的<strong>不确定性</strong>（相对性）：受历史条件制约</li>
+</ul>
+<div class="memory-aid">💡 <strong>唯一标准 = 实践</strong>（不是主观认识，不是客观事物）</div>
+<div class="star-point"><h5>⭐ 真理与价值的辩证统一（考点3）</h5></div>
+<ul>
+<li>成功的实践以<strong>真理和价值的辩证统一</strong>为前提</li>
+<li>价值形成以<strong>坚持真理</strong>为前提，真理必然<strong>具有价值</strong></li>
+<li>真理和价值在实践中<strong>相互制约、相互引导、相互促进</strong></li>
+</ul>
+<h4 class="section-title">三、认识世界和改造世界</h4>
+<ul>
+<li>改造世界包括改造<strong>客观世界和主观世界</strong></li>
+<li><strong>实事求是</strong>是中国共产党思想路线的<strong>核心</strong></li>
+<li><strong>解放思想、实事求是、与时俱进</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>思想路线核心 = 实事求是</strong></div>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第五章 历史观的基本问题和人类社会的存在和发展</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、两种根本对立的历史观</h4>
+<div class="star-point"><h5>⭐ 历史观的基本问题（考点1）</h5></div>
+<ul>
+<li>社会历史观的基本问题：<strong>社会存在与社会意识的关系问题</strong></li>
+<li><strong>社会存在</strong>（物质方面）：自然地理环境、人口因素、<strong>物质生产方式</strong></li>
+<li><strong>社会意识</strong>（精神方面）：社会存在的反映</li>
+<li>两种根本对立的历史观：<strong>唯物史观</strong> vs <strong>唯心史观</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>历史观基本问题 = 社会存在与社会意识的关系</strong></div>
+<div class="star-point"><h5>⭐ 唯心史观的主要缺陷（考点2）</h5></div>
+<p>两个根本缺陷：</p>
+<ol>
+<li>只看到<strong>精神动因</strong></li>
+<li>把历史看成<strong>少数杰出人物</strong>创造的，否认人民群众的决定作用</li>
+</ol>
+<div class="memory-aid">💡 <strong>唯心史观两大缺陷 → &#x27;精神动因 + 英雄创造&#x27;</strong></div>
+<div class="star-point"><h5>⭐ 唯物史观创立的伟大意义（考点3）</h5></div>
+<ul>
+<li>理论来源：德国古典哲学、英国古典政治经济学、法国空想社会主义</li>
+</ul>
+<div class="memory-aid">💡 <strong>理论来源 → &#x27;德哲英经法空想&#x27;</strong></div>
+<h4 class="section-title">二、社会存在与社会意识</h4>
+<div class="star-point"><h5>⭐ 社会存在在社会发展中的作用（考点1）</h5></div>
+<ol>
+<li><strong>地理环境</strong>：人类社会生存和发展永恒的、必要的条件</li>
+<li><strong>人口因素</strong>：对社会发展起<strong>制约和影响</strong>作用，加速或延缓</li>
+<li><strong>生产方式</strong>：在社会发展中起<strong>决定作用</strong></li>
+</ol>
+<p>生产方式的决定作用四方面：</p>
+<ul>
+<li>是人类从动物界分离出来的<strong>根本动力</strong></li>
+<li>是人类社会赖以<strong>存在和发展的基础</strong></li>
+<li>是形成人类一切<strong>社会关系的基础</strong></li>
+<li>决定社会的<strong>性质和面貌</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>生产方式决定作用 → &#x27;分基关面&#x27;（分离、基础、关系、面貌）</strong></div>
+<div class="star-point"><h5>⭐ 社会意识及其结构（考点2）</h5></div>
+<ul>
+<li>社会意识分为：<strong>社会心理</strong>和<strong>社会意识形式</strong></li>
+<li>社会意识形式分两部分：</li>
+<li>不进入上层建筑的：自然科学、逻辑学等</li>
+<li>进入上层建筑的 = <strong>社会意识形态</strong>（思想上层建筑）：政治法律理论、哲学、宗教、道德等</li>
+</ul>
+<div class="memory-aid">💡 <strong>社会意识形态 = 进入上层建筑的社会意识形式 = 思想上层建筑</strong></div>
+<div class="star-point"><h5>⭐ 社会存在与社会意识的辩证关系（考点3）</h5></div>
+<ul>
+<li><strong>社会存在决定社会意识</strong></li>
+<li>社会意识具有<strong>相对独立性</strong>：</li>
+</ul>
+<ol>
+<li>与社会存在发展的<strong>不完全同步性和不平衡性</strong></li>
+<li>各种形式之间的<strong>相互影响</strong>及<strong>历史继承性</strong></li>
+</ol>
+<h4 class="section-title">三、生产力与生产关系的矛盾运动</h4>
+<div class="star-point"><h5>⭐ 生产力与生产关系（考点1）</h5></div>
+<p><strong>生产力基本要素</strong>：</p>
+<ol>
+<li><strong>劳动资料</strong></li>
+<li><strong>劳动对象</strong></li>
+<li><strong>劳动者</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>生产力三要素 → &#x27;资对劳&#x27;（资料、对象、劳动者）</strong></div>
+<p>生产力四类因素：</p>
+<ol>
+<li><strong>独立实体性因素</strong>：劳动对象、劳动资料、劳动者</li>
+<li><strong>运筹性综合因素</strong>：分工协作、经济管理等</li>
+<li><strong>渗透性因素</strong>：自然科学</li>
+<li><strong>准备性因素</strong>：教育</li>
+</ol>
+<div class="memory-aid">💡 <strong>四类因素 → &#x27;实运渗准&#x27;</strong></div>
+<p><strong>生产关系</strong>：最基本的经济关系，其他社会关系受其支配和制约</p>
+<div class="star-point"><h5>⭐ 生产关系一定要适合生产力状况的规律（考点2）</h5></div>
+<ul>
+<li>生产力<strong>决定</strong>生产关系：</li>
+</ul>
+<ol>
+<li>生产力的状况决定生产关系的<strong>性质</strong></li>
+<li>生产力的发展决定生产关系的<strong>变革</strong></li>
+</ol>
+<ul>
+<li>生产关系对生产力具有<strong>反作用</strong></li>
+</ul>
+<h4 class="section-title">四、经济基础与上层建筑的矛盾运动</h4>
+<ul>
+<li><strong>经济基础</strong>：一定发展阶段生产力所决定的<strong>生产关系的总和</strong></li>
+<li><strong>上层建筑</strong>：建立在经济基础之上的<strong>意识形态以及相应的制度、组织和设施</strong></li>
+<li>经济基础<strong>决定</strong>上层建筑，上层建筑<strong>反作用</strong>于经济基础</li>
+</ul>
+<div class="memory-aid">💡 <strong>经济基础 = 生产关系总和；上层建筑 = 意识形态 + 制度组织设施</strong></div>
+<h4 class="section-title">五、社会形态更替</h4>
+<p>社会形态包括：<strong>经济形态、政治形态和意识形态</strong></p>
+<p>社会形态更替的<strong>统一性</strong>：</p>
+<p>原始社会→奴隶社会→封建社会→资本主义社会→共产主义社会</p>
+<p>社会形态更替的<strong>多样性</strong>：</p>
+<ol>
+<li><strong>跨越式</strong>前进</li>
+<li><strong>跃迁式</strong>前进</li>
+<li><strong>渗透式</strong>前进</li>
+</ol>
+<div class="memory-aid">💡 <strong>五种社会形态依次更替 = 统一性；跨越/跃迁/渗透 = 多样性</strong></div>
+<h4 class="section-title">六、文明及其多样性</h4>
+<ul>
+<li>社会主义文明是共产主义文明的<strong>初级阶段或初级形态</strong></li>
+<li>中国特色社会主义创造了<strong>人类文明新形态</strong></li>
+</ul>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第六章 社会历史发展的动力</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、社会基本矛盾</h4>
+<ul>
+<li><strong>社会基本矛盾</strong>：生产力与生产关系、经济基础与上层建筑的矛盾</li>
+<li>社会基本矛盾是社会发展的<strong>根本动力</strong></li>
+<li><strong>生产力</strong>是最基本的动力因素，是社会发展的<strong>最终决定力量</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>根本动力 = 社会基本矛盾；最终决定力量 = 生产力</strong></div>
+<p>社会基本矛盾与社会主要矛盾：</p>
+<ul>
+<li>基本矛盾是其他一切社会矛盾的<strong>根源</strong></li>
+<li>主要矛盾是基本矛盾的<strong>具体体现</strong></li>
+</ul>
+<h4 class="section-title">二、阶级斗争和社会革命</h4>
+<ol>
+<li><strong>阶级斗争</strong>是阶级社会发展的<strong>直接动力</strong></li>
+<li><strong>社会革命</strong>根源于社会基本矛盾的<strong>尖锐化</strong></li>
+<li>阶级斗争三种形式：<strong>经济斗争、政治斗争、思想斗争</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>直接动力 = 阶级斗争；根源 = 社会基本矛盾尖锐化</strong></div>
+<h4 class="section-title">三、科学技术</h4>
+<p>科技革命是推动经济和社会发展的<strong>强大杠杆</strong>：</p>
+<ol>
+<li>促进社会<strong>生产方式</strong>的变革</li>
+<li>推动<strong>生活方式</strong>的变革</li>
+<li>推动社会<strong>文明</strong>的提高</li>
+<li>推动<strong>思维方式</strong>的变革</li>
+</ol>
+<div class="memory-aid">💡 <strong>科技作用 → &#x27;生文活思&#x27;（生产方式、文明、生活方式、思维方式）</strong></div>
+<h4 class="section-title">四、文化的作用</h4>
+<p>文化对社会发展的作用：</p>
+<ol>
+<li>提供<strong>思想指引</strong></li>
+<li>提供<strong>精神动力</strong></li>
+<li>提供<strong>凝聚力量</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>文化作用 → &#x27;思精凝&#x27;</strong></div>
+<h4 class="section-title">五、人民群众在历史发展中的作用</h4>
+<div class="star-point"><h5>⭐ 英雄史观与群众史观（考点1）</h5></div>
+<table class="md-table">
+<tr><th>英雄史观</th><th>群众史观</th></tr>
+<tr><td>少数英雄创造历史</td><td>人民群众创造历史</td></tr>
+<tr><td>唯心史观</td><td>唯物史观</td></tr>
+</table>
+<div class="star-point"><h5>⭐ 人民群众的决定作用（考点2）</h5></div>
+<p>人民群众是历史的创造者：</p>
+<ol>
+<li>社会<strong>物质文明</strong>的创造者</li>
+<li>社会<strong>精神文明</strong>的创造者</li>
+<li>实现<strong>社会变革</strong>的决定力量</li>
+</ol>
+<div class="memory-aid">💡 <strong>人民群众 → &#x27;物精变&#x27;</strong></div>
+<div class="star-point"><h5>⭐ 群众路线（考点3）</h5></div>
+<ul>
+<li><strong>群众观点</strong>：相信群众自己解放自己、全心全意为人民服务、向群众负责、向群众学习</li>
+<li><strong>群众路线</strong>：一切为了群众，一切依靠群众；从群众中来，到群众中去</li>
+</ul>
+<div class="memory-aid">💡 <strong>群众路线 → &#x27;两个一切 + 一来一去&#x27;</strong></div>
+<div class="star-point"><h5>⭐ 群众、阶级、政党、领袖的关系（考点5）</h5></div>
+<p>群众→（划分）→阶级→（领导）→政党→（主持）→领袖</p>
+<div class="memory-aid">💡 <strong>群众→阶级→政党→领袖（层层递进）</strong></div>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>📋 第一部分 高频考点速览</h3></div><div class="chapter-content" style="display:none">
+<table class="md-table">
+<tr><th>序号</th><th>高频考点</th><th>关键词/口诀</th></tr>
+<tr><td>1</td><td>哲学基本问题两方面</td><td>本原 + 同一性</td></tr>
+<tr><td>2</td><td>唯物主义三种形态</td><td>古朴→近形→辩证</td></tr>
+<tr><td>3</td><td>物质唯一特性 vs 根本属性</td><td>客观实在性 vs 运动</td></tr>
+<tr><td>4</td><td>对立统一规律的地位</td><td>实质和核心</td></tr>
+<tr><td>5</td><td>量变质变辩证关系</td><td>必要准备 + 必然结果</td></tr>
+<tr><td>6</td><td>实践是检验真理的唯一标准</td><td>确定性 + 不确定性</td></tr>
+<tr><td>7</td><td>认识的两次飞跃</td><td>感性→理性→实践</td></tr>
+<tr><td>8</td><td>社会基本矛盾与根本动力</td><td>生产力是最终决定力量</td></tr>
+<tr><td>9</td><td>人民群众的历史作用</td><td>物质文明 + 精神文明 + 社会变革</td></tr>
+<tr><td>10</td><td>唯物史观 vs 唯心史观</td><td>社会存在决定社会意识</td></tr>
+</table>
+<p>---</p>
+    <div class="part-header" id="part2"><h2>第二部分 毛泽东思想和中国特色社会主义理论体系概论</h2></div>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第一章 马克思主义中国化时代化的历史进程与理论成果</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、马克思主义中国化时代化的提出</h4>
+<ul>
+<li><strong>1938年</strong>，党的<strong>六届六中全会</strong>，毛泽东在<strong>《论新阶段》</strong>中正式提出&quot;<strong>马克思主义的中国化</strong>&quot;</li>
+</ul>
+<div class="memory-aid">💡 <strong>1938年六届六中全会 = 首次提出马克思主义中国化</strong></div>
+<h4 class="section-title">二、马克思主义中国化时代化的内涵</h4>
+<p>核心要义（&quot;<strong>两个结合</strong>&quot;）：</p>
+<ul>
+<li>马克思主义基本原理同<strong>中国具体实际</strong>相结合</li>
+<li>马克思主义基本原理同<strong>中华优秀传统文化</strong>相结合</li>
+</ul>
+<h4 class="section-title">三、马克思主义中国化时代化的历史进程</h4>
+<table class="md-table">
+<tr><th>时间</th><th>事件</th></tr>
+<tr><td>1919年</td><td>李大钊提出把马克思主义应用到中国实践中</td></tr>
+<tr><td><strong>1935年1月</strong></td><td><strong>遵义会议</strong>，确立毛泽东在全党的实际领导地位</td></tr>
+<tr><td><strong>1938年</strong></td><td>六届六中全会，毛泽东首次提出&quot;马克思主义中国化&quot;</td></tr>
+<tr><td><strong>1945年</strong></td><td><strong>中共七大</strong>，确立毛泽东思想为党的指导思想</td></tr>
+</table>
+<div class="memory-aid">💡 <strong>关键节点 → &#x27;35遵义38化45七&#x27;</strong></div>
+<h4 class="section-title">四、理论成果及其关系</h4>
+<ul>
+<li>理论成果：<strong>毛泽东思想、邓小平理论、&quot;三个代表&quot;重要思想、科学发展观、习近平新时代中国特色社会主义思想</strong></li>
+<li>关系：<strong>一脉相承又与时俱进</strong></li>
+</ul>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第二章 毛泽东思想及其历史地位</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、毛泽东思想的形成和发展</h4>
+<table class="md-table">
+<tr><th>进程</th><th>时期</th><th>内容</th></tr>
+<tr><td><strong>萌芽</strong></td><td>建党和大革命时期</td><td>初步探索中国革命基本问题</td></tr>
+<tr><td><strong>初步形成</strong></td><td>土地革命时期</td><td>农村包围城市、武装夺取政权</td></tr>
+<tr><td><strong>成熟</strong></td><td>抗日战争时期</td><td>1945年七大确立为指导思想</td></tr>
+<tr><td><strong>继续发展</strong></td><td>解放战争和新中国成立后</td><td>人民民主专政理论等</td></tr>
+</table>
+<div class="memory-aid">💡 <strong>形成过程 → &#x27;萌初成继&#x27;（萌芽、初步形成、成熟、继续发展）</strong></div>
+<h4 class="section-title">二、毛泽东思想的主要内容和活的灵魂</h4>
+<div class="star-point"><h5>⭐ 活的灵魂（三方面）</h5></div>
+<ol>
+<li><strong>实事求是</strong>——精髓</li>
+<li><strong>群众路线</strong>——根本工作路线</li>
+<li><strong>独立自主</strong>——中华民族精神之魂</li>
+</ol>
+<div class="memory-aid">💡 <strong>活的灵魂 → &#x27;实群独&#x27;（实事求是、群众路线、独立自主）</strong></div>
+<div class="memory-aid">💡 <strong>实事求是 = 精髓；群众路线 = 根本工作路线；独立自主 = 民族精神之魂</strong></div>
+<h4 class="section-title">三、毛泽东思想的历史地位</h4>
+<ol>
+<li>马克思主义中国化的<strong>第一个</strong>重大理论成果</li>
+<li>被实践证明了的关于中国革命和建设的<strong>正确理论原则和经验总结</strong></li>
+<li>中国共产党和人民宝贵的<strong>精神财富</strong></li>
+</ol>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第三章 新民主主义革命理论</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、新民主主义革命理论形成的依据</h4>
+<ul>
+<li>近代中国国情：<strong>半殖民地半封建社会</strong></li>
+<li>中国革命仍是<strong>资产阶级民主革命</strong>，但从旧民主主义革命转向新民主主义革命</li>
+</ul>
+<h4 class="section-title">二、新民主主义革命的总路线和基本纲领</h4>
+<div class="star-point"><h5>⭐ 总路线（考点1）</h5></div>
+<p>1948年毛泽东完整表述：&quot;<strong>无产阶级领导的，人民大众的，反帝、反封建、反官僚资本主义的革命</strong>&quot;</p>
+<p>📊 <strong>革命对象、动力、领导权</strong></p>
+<table class="md-table">
+<tr><th>项目</th><th>内容</th></tr>
+<tr><td><strong>对象</strong></td><td>帝国主义（首要对象）、封建地主阶级、官僚资本主义</td></tr>
+<tr><td><strong>动力</strong></td><td>无产阶级（最基本动力）、农民（主力军）、城市小资产阶级（可靠同盟军）、民族资产阶级（革命性+软弱性）</td></tr>
+<tr><td><strong>领导权</strong></td><td><strong>无产阶级及其政党</strong></td></tr>
+<tr><td><strong>性质</strong></td><td>资产阶级民主革命</td></tr>
+<tr><td><strong>前途</strong></td><td>社会主义</td></tr>
+</table>
+<div class="memory-aid">💡 <strong>总路线核心 = 无产阶级领导</strong></div>
+<div class="memory-aid">💡 <strong>革命对象 → &#x27;帝封资&#x27;（帝国主义、封建主义、官僚资本主义）</strong></div>
+<div class="memory-aid">💡 <strong>民族资产阶级特性 → 革命性 + 软弱性</strong></div>
+<div class="star-point"><h5>⭐ 基本纲领（考点2）</h5></div>
+<table class="md-table">
+<tr><th>纲领</th><th>内容</th></tr>
+<tr><td><strong>政治纲领</strong></td><td>无产阶级领导的，以工农联盟为基础的，各革命阶级联合专政的新民主主义共和国。国体=各革命阶级联合专政；政体=人民代表大会制度（民主集中制）</td></tr>
+<tr><td><strong>经济纲领</strong></td><td>&quot;两个没收，一个保护&quot;：没收封建地主土地归农民所有、没收官僚资本归国家所有、保护民族工商业</td></tr>
+<tr><td><strong>文化纲领</strong></td><td>无产阶级领导的民族的科学的大众的文化，共产主义思想居指导地位</td></tr>
+</table>
+<div class="memory-aid">💡 <strong>经济纲领 → &#x27;两没一保&#x27;</strong></div>
+<h4 class="section-title">三、新民主主义革命的道路和基本经验</h4>
+<div class="star-point"><h5>⭐ 革命道路（考点1）</h5></div>
+<p><strong>农村包围城市、武装夺取政权</strong>的道路</p>
+<p>&quot;工农武装割据&quot;思想：</p>
+<ul>
+<li><strong>武装斗争</strong>——主要斗争形式</li>
+<li><strong>土地革命</strong>——中心内容</li>
+<li><strong>农村革命根据地</strong>——战略阵地</li>
+</ul>
+<div class="memory-aid">💡 <strong>工农武装割据 → &#x27;武土根&#x27;（武装、土地、根据地）</strong></div>
+<div class="memory-aid">💡 <strong>三个关系：土地革命=基本内容；武装斗争=主要形式+保证；根据地=战略阵地+依托</strong></div>
+<p>关键文献：1930年1月《<strong>星星之火，可以燎原</strong>》——提出&quot;以农村为中心&quot;</p>
+<div class="star-point"><h5>⭐ 三大法宝（考点2）</h5></div>
+<ol>
+<li><strong>统一战线</strong></li>
+<li><strong>武装斗争</strong></li>
+<li><strong>党的建设</strong></li>
+</ol>
+<p>关系：</p>
+<ul>
+<li>统一战线和武装斗争 = 两个基本特点、两个基本武器</li>
+<li>党的组织 = 英勇战士</li>
+</ul>
+<div class="memory-aid">💡 <strong>三大法宝 → &#x27;统战武装党建&#x27;</strong></div>
+<div class="memory-aid">💡 统一战线是实行武装斗争的统一战线；武装斗争是统一战线的中心支柱</div>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第四章 社会主义改造理论</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、新民主主义社会</h4>
+<ul>
+<li>新民主主义社会是<strong>过渡性质</strong>的社会，<strong>不是独立的社会形态</strong></li>
+<li>属于<strong>社会主义体系</strong></li>
+<li>前途必然是<strong>社会主义</strong></li>
+</ul>
+<h4 class="section-title">二、党在过渡时期的总路线</h4>
+<ul>
+<li>核心：<strong>&quot;一化三改&quot;</strong></li>
+<li>主体：社会主义<strong>工业化</strong></li>
+<li>两翼：对<strong>农业、手工业、资本主义工商业</strong>的社会主义改造</li>
+</ul>
+<div class="memory-aid">💡 <strong>一化三改 → 工业化（主体）+ 三改造（两翼）</strong></div>
+<h4 class="section-title">三、社会主义改造道路</h4>
+<p>📊 <strong>三大改造对比</strong></p>
+<table class="md-table">
+<tr><th>改造对象</th><th>方式/方针</th><th>步骤/形式</th></tr>
+<tr><td><strong>农业</strong></td><td>自愿互利、典型示范、国家帮助</td><td>互助组→初级社→高级社</td></tr>
+<tr><td><strong>手工业</strong></td><td>积极领导、稳步前进</td><td>生产合作小组→供销合作社→生产合作社</td></tr>
+<tr><td><strong>资本主义工商业</strong></td><td><strong>和平赎买</strong></td><td>初级国家资本主义→高级国家资本主义（公私合营）</td></tr>
+</table>
+<div class="memory-aid">💡 <strong>三大改造 → &#x27;农手资&#x27;</strong></div>
+<div class="memory-aid">💡 <strong>资本主义工商业 = 和平赎买 + 国家资本主义</strong></div>
+<div class="memory-aid">💡 农业三步：互助组（萌芽）→初级社（半社会主义）→高级社（完全社会主义）</div>
+<ul>
+<li><strong>1956年</strong>社会主义改造基本完成 → 标志<strong>社会主义基本制度初步确立</strong> → 进入<strong>社会主义初级阶段</strong></li>
+</ul>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第五章 社会主义建设道路初步探索的理论成果</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、重要理论成果</h4>
+<div class="star-point"><h5>⭐ 考点1：调动一切积极因素</h5></div>
+<ul>
+<li><strong>《论十大关系》</strong>——探索社会主义建设道路的<strong>良好开端</strong></li>
+</ul>
+<div class="star-point"><h5>⭐ 考点2：正确认识和处理社会主义社会矛盾</h5></div>
+<ol>
+<li><strong>基本矛盾</strong>：仍然是生产关系和生产力、上层建筑和经济基础之间的矛盾</li>
+<li><strong>主要矛盾</strong>：先进工业国要求 vs 落后农业国现实；经济文化发展需要 vs 不能满足需要</li>
+<li>两类不同性质的矛盾：</li>
+</ol>
+<ul>
+<li><strong>敌我矛盾</strong>——对抗性——用<strong>专政</strong>方法解决</li>
+<li><strong>人民内部矛盾</strong>——非对抗性——用<strong>民主</strong>方法解决</li>
+</ul>
+<div class="memory-aid">💡 <strong>两类矛盾 → &#x27;敌专民专&#x27;（敌我用专政，人民用民主）</strong></div>
+<div class="star-point"><h5>⭐ 考点3：走中国工业化道路</h5></div>
+<div class="star-point"><h5>⭐ 考点4：&quot;四个现代化&quot; → 工业、农业、科学文化、国防</h5></div>
+<div class="memory-aid">💡 <strong>四化 → &#x27;工农科国&#x27;</strong></div>
+<h4 class="section-title">二、意义和经验教训</h4>
+<p>初步探索为开创中国特色社会主义提供了<strong>宝贵经验、物质基础、理论准备</strong></p>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第六章 中国特色社会主义理论体系的形成发展</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、社会历史条件</h4>
+<p>📊 <strong>各理论形成的国际背景和核心问题</strong></p>
+<table class="md-table">
+<tr><th>理论</th><th>国际背景</th><th>回答的核心问题</th></tr>
+<tr><td><strong>邓小平理论</strong></td><td>和平与发展</td><td>什么是社会主义、怎样建设社会主义</td></tr>
+<tr><td><strong>&quot;三个代表&quot;</strong></td><td>东欧剧变、苏联解体</td><td>建设什么样的党、怎样建设党</td></tr>
+<tr><td><strong>科学发展观</strong></td><td>大发展大变革大调整</td><td>实现什么样的发展、怎样发展</td></tr>
+<tr><td><strong>习近平新时代</strong></td><td>百年未有之大变局</td><td>新时代坚持和发展什么样的中国特色社会主义等</td></tr>
+</table>
+<div class="memory-aid">💡 <strong>邓→社会主义；三→党；科→发展；习→新时代课题</strong></div>
+<h4 class="section-title">二、形成发展过程</h4>
+<table class="md-table">
+<tr><th>时间</th><th>事件</th></tr>
+<tr><td>1978年</td><td>十一届三中全会——改革开放</td></tr>
+<tr><td>1982年</td><td>十二大——提出&quot;有中国特色的社会主义&quot;</td></tr>
+<tr><td>1987年</td><td>十三大——系统概括中国特色社会主义理论</td></tr>
+<tr><td>1992年</td><td>南方谈话——邓小平理论走向成熟</td></tr>
+<tr><td>1997年</td><td>十五大——正式提出&quot;邓小平理论&quot;</td></tr>
+<tr><td>2002年</td><td>十六大——&quot;三个代表&quot;写入党章</td></tr>
+<tr><td>2007年</td><td>十七大——科学发展观写入党章</td></tr>
+<tr><td><strong>2017年</strong></td><td><strong>十九大</strong>——习近平新时代中国特色社会主义思想写入党章</td></tr>
+<tr><td>2018年</td><td>宪法修正案——习近平新时代写入宪法</td></tr>
+</table>
+<div class="memory-aid">💡 <strong>关键年份 → &#x27;78开82提87概92熟97立02三07科17习18宪&#x27;</strong></div>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第七章 邓小平理论</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、首要的基本的理论问题和精髓</h4>
+<ul>
+<li>首要问题：<strong>什么是社会主义、怎样建设社会主义</strong></li>
+</ul>
+<div class="star-point"><h5>⭐ 社会主义的本质（1992年南方谈话）</h5></div>
+<div class="quote-box">&quot;社会主义的本质，是<strong>解放生产力，发展生产力，消灭剥削，消除两极分化，最终达到共同富裕</strong>。&quot;</div>
+<div class="memory-aid">💡 <strong>社会主义本质 → &#x27;解放发展消灭消除达到&#x27;</strong></div>
+<ul>
+<li><strong>精髓</strong>：解放思想、实事求是</li>
+</ul>
+<h4 class="section-title">二、邓小平理论的主要内容</h4>
+<ol>
+<li><strong>社会主义初级阶段理论</strong>：</li>
+</ol>
+<ul>
+<li>已经是社会主义 + 还处在初级阶段</li>
+</ul>
+<ol>
+<li><strong>基本路线</strong>（十三大）：以经济建设为中心，坚持四项基本原则，坚持改革开放 → <strong>&quot;一个中心，两个基本点&quot;</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>基本路线 → &#x27;一个中心两个基本点&#x27;</strong></div>
+<ol>
+<li><strong>&quot;三步走&quot;发展战略</strong>：</li>
+</ol>
+<ul>
+<li>第一步：1990年，比1980年翻一番，解决温饱</li>
+<li>第二步：20世纪末，再增长一倍，达到小康</li>
+<li>第三步：21世纪中叶，达到中等发达国家水平</li>
+</ul>
+<div class="memory-aid">💡 <strong>三步走 → &#x27;温饱→小康→中等发达&#x27;</strong></div>
+<ol>
+<li><strong>社会主义市场经济理论</strong>：</li>
+</ol>
+<ul>
+<li>计划经济≠社会主义，市场经济≠资本主义</li>
+<li>计划和市场都是<strong>经济手段</strong></li>
+</ul>
+<ol>
+<li><strong>&quot;两手抓，两手都要硬&quot;</strong>：物质文明 + 精神文明</li>
+</ol>
+<ol>
+<li><strong>&quot;一国两制&quot;</strong>：</li>
+</ol>
+<ul>
+<li>核心：坚持<strong>一个中国</strong></li>
+<li>两制并存</li>
+<li>高度自治</li>
+<li>和平统一，不承诺放弃使用武力</li>
+</ul>
+<ol>
+<li>和平与发展是当今世界的<strong>两大主题</strong></li>
+</ol>
+<h4 class="section-title">三、邓小平理论的历史地位</h4>
+<ol>
+<li>中国特色社会主义理论体系的<strong>开篇之作</strong></li>
+<li>中国特色社会主义现代化建设的科学指南</li>
+</ol>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第八章 &quot;三个代表&quot;重要思想</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、核心观点</h4>
+<ol>
+<li>代表中国<strong>先进生产力</strong>的发展要求</li>
+<li>代表中国<strong>先进文化</strong>的前进方向</li>
+<li>代表中国<strong>最广大人民</strong>的根本利益</li>
+</ol>
+<div class="memory-aid">💡 <strong>三个代表 → &#x27;生产力 + 文化 + 人民&#x27;</strong></div>
+<h4 class="section-title">二、主要内容</h4>
+<ol>
+<li>发展是党执政兴国的<strong>第一要务</strong></li>
+<li>建立社会主义市场经济体制</li>
+<li>全面建设小康社会</li>
+<li>建设社会主义政治文明</li>
+<li><strong>&quot;引进来&quot;和&quot;走出去&quot;</strong>相结合</li>
+<li>推进党的建设新的伟大工程</li>
+</ol>
+<h4 class="section-title">三、历史地位</h4>
+<ul>
+<li>中国特色社会主义理论体系的<strong>接续发展</strong></li>
+</ul>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第九章 科学发展观</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、科学内涵</h4>
+<table class="md-table">
+<tr><th>要素</th><th>内容</th></tr>
+<tr><td><strong>第一要义</strong></td><td>发展</td></tr>
+<tr><td><strong>核心立场</strong></td><td>以人为本</td></tr>
+<tr><td><strong>基本要求</strong></td><td>全面协调可持续</td></tr>
+<tr><td><strong>根本方法</strong></td><td>统筹兼顾</td></tr>
+</table>
+<div class="memory-aid">💡 <strong>科学发展观内涵 → &#x27;发人全统&#x27;（发展、以人为本、全面协调可持续、统筹兼顾）</strong></div>
+<h4 class="section-title">二、主要内容</h4>
+<ol>
+<li>加快转变经济发展方式</li>
+<li>发展社会主义民主政治</li>
+<li>推进社会主义文化强国建设</li>
+<li>构建社会主义<strong>和谐社会</strong></li>
+<li>推进<strong>生态文明</strong>建设</li>
+<li>全面提高党的建设科学化水平</li>
+</ol>
+<h4 class="section-title">三、历史地位</h4>
+<ul>
+<li>中国特色社会主义理论体系在新世纪新阶段的<strong>接续发展</strong></li>
+<li>全面建设小康社会、加快推进社会主义现代化的<strong>根本指针</strong></li>
+</ul>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>📋 第二部分 高频考点速览</h3></div><div class="chapter-content" style="display:none">
+<table class="md-table">
+<tr><th>序号</th><th>高频考点</th><th>关键词/口诀</th></tr>
+<tr><td>1</td><td>马克思主义中国化首次提出</td><td>1938年六届六中全会</td></tr>
+<tr><td>2</td><td>毛泽东思想活的灵魂</td><td>实群独</td></tr>
+<tr><td>3</td><td>新民主主义革命总路线核心</td><td>无产阶级领导</td></tr>
+<tr><td>4</td><td>新民主主义革命三大法宝</td><td>统一战线、武装斗争、党的建设</td></tr>
+<tr><td>5</td><td>社会主义改造——和平赎买</td><td>资本主义工商业</td></tr>
+<tr><td>6</td><td>社会主义本质</td><td>解放发展生产力+共同富裕</td></tr>
+<tr><td>7</td><td>社会主义初级阶段基本路线</td><td>一个中心两个基本点</td></tr>
+<tr><td>8</td><td>科学发展观内涵</td><td>第一要义是发展，核心是以人为本</td></tr>
+</table>
+<p>---</p>
+    <div class="part-header" id="part3"><h2>第三部分 习近平新时代中国特色社会主义思想概论</h2></div>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第一章 习近平新时代中国特色社会主义思想的创立</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、创立的时代背景</h4>
+<ol>
+<li>世界<strong>百年未有之大变局</strong></li>
+<li>中华民族伟大复兴进入<strong>关键时期</strong></li>
+<li><strong>中国式现代化</strong>全面推进拓展</li>
+<li>科学社会主义在21世纪中国焕发新的蓬勃生机</li>
+<li>中国共产党<strong>自我革命</strong>开辟新的境界</li>
+</ol>
+<div class="memory-aid">💡 <strong>时代背景 → &#x27;变局复兴现代化科社自我革命&#x27;</strong></div>
+<h4 class="section-title">二、&quot;两个结合&quot;</h4>
+<ul>
+<li>马克思主义基本原理同<strong>中国具体实际</strong>相结合</li>
+<li>马克思主义基本原理同<strong>中华优秀传统文化</strong>相结合</li>
+</ul>
+<h4 class="section-title">三、科学体系</h4>
+<div class="star-point"><h5>⭐ 三大时代课题</h5></div>
+<ol>
+<li>新时代坚持和发展什么样的<strong>中国特色社会主义</strong>、怎样坚持和发展</li>
+<li>建设什么样的<strong>社会主义现代化强国</strong>、怎样建设</li>
+<li>建设什么样的<strong>长期执政的马克思主义政党</strong>、怎样建设</li>
+</ol>
+<div class="memory-aid">💡 <strong>三大课题 → &#x27;社会主义 + 现代化强国 + 长期执政党&#x27;</strong></div>
+<div class="star-point"><h5>⭐ &quot;十个明确&quot;（核心内容）</h5></div>
+<ol>
+<li>最本质特征 = <strong>中国共产党领导</strong>；最大优势 = <strong>中国共产党领导</strong>；增强&quot;四个意识&quot;、坚定&quot;四个自信&quot;、做到&quot;两个维护&quot;</li>
+<li>总任务 = <strong>实现社会主义现代化和中华民族伟大复兴</strong>；分两步走；<strong>中国式现代化</strong></li>
+<li>社会主要矛盾 = <strong>人民日益增长的美好生活需要</strong>和<strong>不平衡不充分的发展</strong>之间的矛盾</li>
+<li>总体布局 = <strong>&quot;五位一体&quot;</strong>；战略布局 = <strong>&quot;四个全面&quot;</strong></li>
+<li>全面深化改革总目标 = 完善和发展中国特色社会主义制度 + <strong>推进国家治理体系和治理能力现代化</strong></li>
+<li>全面推进依法治国总目标 = 建设中国特色社会主义法治体系 + 建设社会主义法治国家</li>
+<li>社会主义基本经济制度；<strong>新发展阶段、新发展理念、新发展格局</strong></li>
+<li>强军目标 = <strong>听党指挥、能打胜仗、作风优良</strong></li>
+<li>大国外交 = 推动构建<strong>人类命运共同体</strong></li>
+<li><strong>全面从严治党</strong>；以伟大<strong>自我革命</strong>引领伟大<strong>社会革命</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>十个明确核心 → &#x27;领导总任务矛盾布局改法经军外治&#x27;</strong></div>
+<div class="star-point"><h5>⭐ &quot;十四个坚持&quot;（基本方略）</h5></div>
+<ol>
+<li>坚持党对一切工作的领导</li>
+<li>坚持以人民为中心</li>
+<li>坚持全面深化改革</li>
+<li>坚持新发展理念</li>
+<li>坚持人民当家作主</li>
+<li>坚持全面依法治国</li>
+<li>坚持社会主义核心价值体系</li>
+<li>坚持在发展中保障和改善民生</li>
+<li>坚持人与自然和谐共生</li>
+<li>坚持总体国家安全观</li>
+<li>坚持党对人民军队的绝对领导</li>
+<li>坚持&quot;一国两制&quot;和推进祖国统一</li>
+<li>坚持推动构建人类命运共同体</li>
+<li>坚持全面从严治党</li>
+</ol>
+<div class="memory-aid">💡 <strong>十四个坚持 → &#x27;党领民中改新理价生安军一国命治&#x27;</strong></div>
+<div class="star-point"><h5>⭐ &quot;六个必须坚持&quot;（世界观和方法论）</h5></div>
+<ol>
+<li>坚持<strong>人民至上</strong></li>
+<li>坚持<strong>自信自立</strong></li>
+<li>坚持<strong>守正创新</strong></li>
+<li>坚持<strong>问题导向</strong></li>
+<li>坚持<strong>系统观念</strong></li>
+<li>坚持<strong>胸怀天下</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>六个必须坚持 → &#x27;人自守问系天&#x27;（人民至上、自信自立、守正创新、问题导向、系统观念、胸怀天下）</strong></div>
+<p><strong>科学体系总括</strong>：十个明确 + 十四个坚持 + 十三个方面成就 + 六个必须坚持 → 内在贯通、有机统一</p>
+<h4 class="section-title">四、历史地位和&quot;两个确立&quot;</h4>
+<ul>
+<li><strong>当代中国马克思主义、二十一世纪马克思主义</strong></li>
+<li><strong>中华文化和中国精神的时代精华</strong></li>
+<li>实现了马克思主义中国化时代化<strong>新的飞跃</strong></li>
+</ul>
+<p><strong>&quot;两个确立&quot;</strong>：</p>
+<ol>
+<li>确立习近平同志<strong>党中央的核心、全党的核心地位</strong></li>
+<li>确立习近平新时代中国特色社会主义思想的<strong>指导地位</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>两个确立 → &#x27;核心地位 + 指导地位&#x27;</strong></div>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第二章 新时代坚持和发展中国特色社会主义</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、新时代的历史方位</h4>
+<div class="star-point"><h5>⭐ 新时代内涵（五方面）</h5></div>
+<ol>
+<li>继续夺取中国特色社会主义伟大胜利的时代</li>
+<li>全面建成小康社会→全面建设社会主义现代化强国的时代</li>
+<li>逐步实现全体人民<strong>共同富裕</strong>的时代</li>
+<li>实现中华民族伟大复兴<strong>中国梦</strong>的时代</li>
+<li>我国不断为人类作出更大贡献的时代</li>
+</ol>
+<div class="star-point"><h5>⭐ 新时代意义（三大意义）</h5></div>
+<ol>
+<li>迎来从<strong>站起来、富起来到强起来</strong>的伟大飞跃</li>
+<li>科学社会主义在21世纪中国焕发出强大生机活力</li>
+<li>拓展了发展中国家走向现代化的途径</li>
+</ol>
+<div class="memory-aid">💡 <strong>三大意义 → &#x27;飞跃科社拓展&#x27;</strong></div>
+<div class="star-point"><h5>⭐ 社会主要矛盾变化</h5></div>
+<ul>
+<li>新矛盾：<strong>人民日益增长的美好生活需要</strong> vs <strong>不平衡不充分的发展</strong></li>
+<li><strong>没有改变</strong>对社会主义所处历史阶段的判断（仍处于社会主义初级阶段）</li>
+</ul>
+<div class="memory-aid">💡 <strong>主要矛盾变了，基本国情没变</strong></div>
+<h4 class="section-title">二、总体布局和战略布局</h4>
+<ul>
+<li><strong>&quot;五位一体&quot;</strong>总体布局：经济、政治、文化、社会、生态文明建设</li>
+<li><strong>&quot;四个全面&quot;</strong>战略布局：</li>
+<li>战略目标：全面建设社会主义现代化国家</li>
+<li>战略举措：全面深化改革、全面依法治国、全面从严治党</li>
+</ul>
+<div class="memory-aid">💡 <strong>五位一体 → &#x27;经政文社生&#x27;；四个全面 → &#x27;建改法治&#x27;</strong></div>
+<h4 class="section-title">三、党的基本理论、基本路线、基本方略</h4>
+<p><strong>基本路线</strong>（社会主义初级阶段）：以<strong>经济建设为中心</strong>，坚持<strong>四项基本原则</strong>，坚持<strong>改革开放</strong> → 国家的<strong>生命线</strong>、人民的<strong>幸福线</strong></p>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第三章 以中国式现代化全面推进中华民族伟大复兴</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、中国梦</h4>
+<ul>
+<li>2012年11月29日首次提出</li>
+<li>本质：<strong>国家富强、民族振兴、人民幸福</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>中国梦本质 → &#x27;富强振兴幸福&#x27;</strong></div>
+<h4 class="section-title">二、全面建成社会主义现代化强国（两步走）</h4>
+<ol>
+<li>到<strong>2035年</strong>，基本实现社会主义现代化</li>
+<li>到<strong>本世纪中叶</strong>，建成富强民主文明和谐美丽的社会主义现代化强国</li>
+</ol>
+<div class="memory-aid">💡 <strong>两步走 → &#x27;35基本 中叶建成&#x27;</strong></div>
+<h4 class="section-title">三、中国式现代化</h4>
+<div class="star-point"><h5>⭐ 中国特色（五方面）</h5></div>
+<ol>
+<li><strong>人口规模巨大</strong>的现代化</li>
+<li><strong>全体人民共同富裕</strong>的现代化</li>
+<li><strong>物质文明和精神文明相协调</strong>的现代化</li>
+<li><strong>人与自然和谐共生</strong>的现代化</li>
+<li><strong>走和平发展道路</strong>的现代化</li>
+</ol>
+<div class="memory-aid">💡 <strong>中国式现代化五特征 → &#x27;人文物人和&#x27;（人口、文明、物质精神、人自然、和平）</strong></div>
+<div class="star-point"><h5>⭐ 本质要求</h5></div>
+<p>坚持中国共产党领导，坚持中国特色社会主义，实现高质量发展，发展全过程人民民主，丰富人民精神世界，实现全体人民共同富裕，促进人与自然和谐共生，推动构建人类命运共同体，创造人类文明新形态</p>
+<div class="memory-aid">💡 <strong>本质要求 → &#x27;两坚持五实现一推动一创造&#x27;</strong></div>
+<div class="star-point"><h5>⭐ 重大原则（五条）</h5></div>
+<ol>
+<li>坚持和加强<strong>党的全面领导</strong></li>
+<li>坚持<strong>中国特色社会主义道路</strong></li>
+<li>坚持<strong>以人民为中心</strong></li>
+<li>坚持<strong>深化改革开放</strong></li>
+<li>坚持<strong>发扬斗争精神</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>五条原则 → &#x27;党路民改争&#x27;</strong></div>
+<div class="star-point"><h5>⭐ 正确处理的重大关系（六对）</h5></div>
+<ol>
+<li>顶层设计与实践探索</li>
+<li>战略与策略</li>
+<li><strong>守正与创新</strong></li>
+<li>效率与公平</li>
+<li>活力与秩序</li>
+<li>自立自强与对外开放</li>
+</ol>
+<div class="memory-aid">💡 <strong>六对关系 → &#x27;顶战守效活自&#x27;</strong></div>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第四章 坚持党的全面领导</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、党的领导是最本质特征和最大优势</h4>
+<ol>
+<li>党的领导地位是在<strong>历史奋斗</strong>中形成的</li>
+<li>党的领导关系中国特色社会主义的<strong>性质、方向和命运</strong></li>
+<li>党的领导是实现中华民族伟大复兴的<strong>根本保证</strong></li>
+</ol>
+<h4 class="section-title">二、党是最高政治领导力量</h4>
+<ul>
+<li>维护<strong>党中央权威和集中统一领导</strong>是重大建党原则</li>
+<li>最关键的是维护习近平同志<strong>核心地位</strong></li>
+<li>同坚持<strong>民主集中制</strong>完全一致</li>
+</ul>
+<h4 class="section-title">三、党的领导制度体系</h4>
+<p>六个方面制度：</p>
+<ol>
+<li><strong>不忘初心、牢记使命</strong>的制度</li>
+<li>坚定维护<strong>党中央权威和集中统一领导</strong>的各项制度</li>
+<li>健全<strong>党的全面领导</strong>制度</li>
+<li>健全<strong>为人民执政、靠人民执政</strong>各项制度</li>
+<li>健全提高<strong>执政能力和领导水平</strong>制度</li>
+<li>完善<strong>全面从严治党</strong>制度</li>
+</ol>
+<div class="memory-aid">💡 <strong>六项制度 → &#x27;不忘权威全面为执治&#x27;</strong></div>
+<ul>
+<li>党的领导制度是中国特色社会主义制度体系的<strong>核心</strong></li>
+</ul>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第五章 坚持以人民为中心</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、人民立场</h4>
+<ul>
+<li><strong>江山就是人民，人民就是江山</strong></li>
+<li>人民立场是党的<strong>根本政治立场</strong></li>
+</ul>
+<h4 class="section-title">二、坚持人民至上</h4>
+<ol>
+<li>人民对<strong>美好生活的向往</strong>就是党的奋斗目标</li>
+<li><strong>依靠人民</strong>创造历史伟业——尊重人民主体地位和首创精神</li>
+<li>人民是党的工作的<strong>最高裁决者和最终评判者</strong></li>
+</ol>
+<h4 class="section-title">三、共同富裕</h4>
+<ul>
+<li>共同富裕是<strong>中国特色社会主义的本质要求</strong></li>
+<li>是<strong>中国式现代化的重要特征</strong></li>
+<li>构建<strong>初次分配、再分配、三次分配</strong>协调配套的制度安排</li>
+<li>形成<strong>中间大、两头小的橄榄型分配结构</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>三次分配 → &#x27;初再三&#x27;；目标结构 → &#x27;橄榄型&#x27;</strong></div>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第六章 全面深化改革开放</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、改革开放的地位</h4>
+<ul>
+<li>改革开放是<strong>决定当代中国命运的关键一招</strong></li>
+<li>是党和人民大踏步赶上时代的<strong>重要法宝</strong></li>
+<li>是坚持和发展中国特色社会主义的<strong>必由之路</strong></li>
+</ul>
+<p>两个划时代会议：</p>
+<ol>
+<li><strong>十一届三中全会</strong>——开启改革开放</li>
+<li><strong>十八届三中全会</strong>——全面深化改革</li>
+</ol>
+<div class="memory-aid">💡 <strong>两个会议 → &#x27;十一启十八深&#x27;</strong></div>
+<h4 class="section-title">二、全面深化改革总目标</h4>
+<p><strong>完善和发展中国特色社会主义制度、推进国家治理体系和治理能力现代化</strong></p>
+<div class="memory-aid">💡 <strong>总目标 = 制度完善 + 治理现代化</strong></div>
+<h4 class="section-title">三、改革方法论</h4>
+<ol>
+<li>增强系统性、整体性、协同性</li>
+<li><strong>顶层设计</strong>与<strong>摸着石头过河</strong>相结合</li>
+<li>统筹改革发展稳定</li>
+<li>胆子大、步子稳</li>
+<li>重大改革<strong>于法有据</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>方法论 → &#x27;系顶统胆法&#x27;</strong></div>
+<h4 class="section-title">四、扩大高水平对外开放</h4>
+<ul>
+<li>中国的发展离不开世界，世界的繁荣也需要中国</li>
+</ul>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第七章 推动高质量发展</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、新发展阶段</h4>
+<ul>
+<li>全面建设社会主义现代化国家、向<strong>第二个百年目标</strong>进军的重要阶段</li>
+</ul>
+<h4 class="section-title">二、新发展理念</h4>
+<table class="md-table">
+<tr><th>理念</th><th>定位</th></tr>
+<tr><td><strong>创新</strong></td><td>引领发展的<strong>第一动力</strong></td></tr>
+<tr><td><strong>协调</strong></td><td>持续健康发展的<strong>内在要求</strong></td></tr>
+<tr><td><strong>绿色</strong></td><td>永续发展的<strong>必要条件</strong></td></tr>
+<tr><td><strong>开放</strong></td><td>国家繁荣富强的<strong>必由之路</strong></td></tr>
+<tr><td><strong>共享</strong></td><td>中国特色社会主义的<strong>本质要求</strong></td></tr>
+</table>
+<div class="memory-aid">💡 <strong>五大理念 → &#x27;创协绿开共&#x27;</strong></div>
+<div class="memory-aid">💡 <strong>创新=第一动力；协调=内在要求；绿色=必要条件；开放=必由之路；共享=本质要求</strong></div>
+<p>实践要求：从根本宗旨、问题导向、忧患意识上把握</p>
+<h4 class="section-title">三、社会主义基本经济制度</h4>
+<ol>
+<li><strong>公有制为主体、多种所有制经济共同发展</strong></li>
+<li><strong>按劳分配为主体、多种分配方式并存</strong></li>
+<li><strong>社会主义市场经济体制</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>基本经济制度三方面 → &#x27;所有制+分配制+市场体制&#x27;</strong></div>
+<h4 class="section-title">四、新发展格局</h4>
+<ul>
+<li><strong>以国内大循环为主体、国内国际双循环相互促进</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>新发展格局 → &#x27;内主外促&#x27;</strong></div>
+<h4 class="section-title">五、现代化经济体系（七个方面）</h4>
+<p>创新引领的产业体系、统一开放的市场体系、体现效率促进公平的分配体系、彰显优势的区域发展体系、资源节约的绿色发展体系、多元平衡的开放体系、充分发挥市场作用的经济体制</p>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第八章 教育、科技、人才战略</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、基础性、战略性支撑</h4>
+<ul>
+<li>教育、科技、人才是全面建设社会主义现代化国家的<strong>基础性、战略性支撑</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>三者定位 → &#x27;基础性+战略性&#x27;</strong></div>
+<ul>
+<li>教育 = <strong>坚实基础</strong></li>
+<li>科技 = <strong>强大动力</strong></li>
+<li>人才 = <strong>有力支撑</strong></li>
+</ul>
+<h4 class="section-title">二、建设教育强国</h4>
+<ul>
+<li>落实<strong>立德树人</strong>根本任务</li>
+<li>着力解决&quot;<strong>培养什么人、怎样培养人、为谁培养人</strong>&quot;</li>
+</ul>
+<div class="memory-aid">💡 <strong>教育三问 → &#x27;什么怎样为谁&#x27;</strong></div>
+<h4 class="section-title">三、建设科技强国</h4>
+<ul>
+<li>科技兴则民族兴，科技强则国家强</li>
+<li>首要任务：加快实现&quot;<strong>卡脖子</strong>&quot;关键核心技术突破</li>
+<li>创新驱动发展&quot;三步走&quot;：2020年进入创新型国家→2030年跻身前列→<strong>2050年建成世界科技创新强国</strong></li>
+</ul>
+<h4 class="section-title">四、建设人才强国</h4>
+<ul>
+<li>坚持<strong>党管人才</strong></li>
+<li>聚天下英才而用之</li>
+</ul>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第九章 发展全过程人民民主</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、中国特色社会主义政治制度</h4>
+<ul>
+<li>根本政治制度：<strong>人民代表大会制度</strong></li>
+<li>基本政治制度：<strong>中国共产党领导的多党合作和政治协商制度</strong>、<strong>民族区域自治制度</strong>、<strong>基层群众自治制度</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>根本制度 → 人大；基本制度 → &#x27;协民族基层&#x27;</strong></div>
+<p>政治发展道路：坚持<strong>党的领导、人民当家作主、依法治国</strong>有机统一</p>
+<div class="memory-aid">💡 <strong>有机统一 → &#x27;党民法&#x27;</strong></div>
+<h4 class="section-title">二、全过程人民民主</h4>
+<ul>
+<li>是社会主义民主政治的<strong>本质属性</strong></li>
+<li>特征：过程民主和成果民主、程序民主和实质民主、直接民主和间接民主、人民民主和国家意志<strong>相统一</strong></li>
+<li>是<strong>全链条、全方位、全覆盖</strong>的民主</li>
+<li>是<strong>最广泛、最真实、最管用</strong>的民主</li>
+</ul>
+<div class="memory-aid">💡 <strong>全过程人民民主 → &#x27;四统一三全三最&#x27;</strong></div>
+<h4 class="section-title">三、协商民主</h4>
+<ul>
+<li>是实践全过程人民民主的<strong>重要形式</strong></li>
+<li>是中国社会主义民主政治中<strong>独特的、独有的、独到的</strong>民主形式</li>
+</ul>
+<h4 class="section-title">四、统一战线</h4>
+<ul>
+<li>是夺取革命、建设、改革事业胜利的<strong>重要法宝</strong></li>
+<li>也是实现中华民族伟大复兴的<strong>重要法宝</strong></li>
+</ul>
+<p><strong>铸牢中华民族共同体意识</strong>：民族团结是各族人民的<strong>生命线</strong></p>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第十章 全面依法治国</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、法治道路核心要义</h4>
+<ul>
+<li>坚持<strong>党的领导</strong>，坚持<strong>中国特色社会主义制度</strong>，贯彻<strong>中国特色社会主义法治理论</strong></li>
+</ul>
+<p><strong>基本原则</strong>：</p>
+<ol>
+<li>坚持中国共产党领导</li>
+<li>坚持以人民为中心</li>
+<li>坚持法律面前人人平等——<strong>平等是社会主义法律的基本属性</strong></li>
+<li>坚持<strong>依法治国和以德治国</strong>相结合</li>
+<li>坚持从中国实际出发</li>
+</ol>
+<div class="memory-aid">💡 <strong>五原则 → &#x27;党人平德实&#x27;</strong></div>
+<h4 class="section-title">二、法治体系建设</h4>
+<p>全面推进依法治国的<strong>总抓手</strong>：建设中国特色社会主义法治体系</p>
+<p>五大体系：</p>
+<ol>
+<li>完备的<strong>法律规范</strong>体系</li>
+<li>高效的<strong>法治实施</strong>体系</li>
+<li>严密的<strong>法治监督</strong>体系</li>
+<li>有力的<strong>法治保障</strong>体系</li>
+<li>完善的<strong>党内法规</strong>体系</li>
+</ol>
+<div class="memory-aid">💡 <strong>五大体系 → &#x27;规范实施监督保障党规&#x27;</strong></div>
+<p><strong>坚持依宪治国、依宪执政</strong>：宪法的生命在于<strong>实施</strong>，宪法的权威也在于<strong>实施</strong></p>
+<h4 class="section-title">三、法治中国建设</h4>
+<p>工作布局：</p>
+<ol>
+<li>依法治国、依法执政、依法行政<strong>共同推进</strong></li>
+<li>法治国家、法治政府、法治社会<strong>一体建设</strong></li>
+<li>统筹国内法治和<strong>涉外法治</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>工作布局 → &#x27;三共同三一体+涉外&#x27;</strong></div>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第十一章 建设社会主义文化强国</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、文化自信</h4>
+<ul>
+<li>中华优秀传统文化——<strong>深厚基础</strong></li>
+<li>革命文化和社会主义先进文化——<strong>坚强基石</strong></li>
+<li>中国特色社会主义伟大实践——<strong>现实基础</strong></li>
+</ul>
+<h4 class="section-title">二、文化发展道路</h4>
+<ul>
+<li><strong>&quot;二为&quot;方向</strong>：为人民服务、为社会主义服务</li>
+<li><strong>&quot;双百&quot;方针</strong>：百花齐放、百家争鸣</li>
+</ul>
+<div class="memory-aid">💡 <strong>二为双百 → &#x27;人民+社会服务；百花+百家&#x27;</strong></div>
+<h4 class="section-title">三、意识形态</h4>
+<ul>
+<li>坚持<strong>马克思主义在意识形态领域指导地位的根本制度</strong></li>
+<li>互联网是意识形态工作的<strong>主阵地、主战场、最前沿</strong></li>
+</ul>
+<h4 class="section-title">四、弘扬中国共产党人精神谱系</h4>
+<p><strong>伟大建党精神</strong>：坚持真理、坚守理想，践行初心、担当使命，不怕牺牲、英勇斗争，对党忠诚、不负人民</p>
+<div class="memory-aid">💡 <strong>建党精神 → &#x27;真理想 初使命 不怕死 忠人民&#x27;</strong></div>
+<h4 class="section-title">五、中华文明突出特性（五大特性）</h4>
+<ol>
+<li><strong>连续性</strong></li>
+<li><strong>创新性</strong></li>
+<li><strong>统一性</strong></li>
+<li><strong>包容性</strong></li>
+<li><strong>和平性</strong></li>
+</ol>
+<div class="memory-aid">💡 <strong>五特性 → &#x27;创统和包和&#x27; → 创新、统一、连续、包容、和平</strong></div>
+<h4 class="section-title">六、创造性转化、创新性发展</h4>
+<ul>
+<li><strong>创造性转化</strong>：改造陈旧表现形式，赋予新的时代内涵和现代表达形式</li>
+<li><strong>创新性发展</strong>：补充、拓展、完善内涵，增强影响力和感召力</li>
+</ul>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第十二章 以保障和改善民生为重点加强社会建设</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、民生是人民幸福之基</h4>
+<ul>
+<li>发展是解决民生问题的&quot;<strong>总钥匙</strong>&quot;</li>
+<li>民生是发展的&quot;<strong>指南针</strong>&quot;</li>
+<li>坚持<strong>尽力而为、量力而行</strong></li>
+</ul>
+<h4 class="section-title">二、提高人民生活品质</h4>
+<ol>
+<li><strong>完善分配制度</strong>——分配制度是促进共同富裕的<strong>基础性制度</strong></li>
+<li><strong>实施就业优先战略</strong></li>
+<li><strong>健全社会保障体系</strong></li>
+<li><strong>推进健康中国建设</strong></li>
+</ol>
+<h4 class="section-title">三、推进社会治理现代化</h4>
+<ul>
+<li><strong>共建共治共享</strong>的社会治理制度</li>
+<li>社会治理四坚持：系统治理、依法治理、综合治理、源头治理</li>
+</ul>
+<div class="memory-aid">💡 <strong>社会治理 → &#x27;共建共治共享&#x27; + &#x27;系依综源&#x27;</strong></div>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第十三章 建设社会主义生态文明</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、绿水青山就是金山银山</h4>
+<ul>
+<li>生态环境保护和经济发展是<strong>辩证统一、相辅相成</strong>的</li>
+</ul>
+<h4 class="section-title">二、建设美丽中国</h4>
+<ol>
+<li>加快形成<strong>绿色生产方式和生活方式</strong></li>
+<li>积极稳妥推进<strong>碳达峰碳中和</strong></li>
+<li><strong>山水林田湖草沙</strong>一体化保护和系统治理</li>
+</ol>
+<div class="memory-aid">💡 <strong>一体化治理 → &#x27;山水林田湖草沙&#x27;</strong></div>
+<ol>
+<li>用最严格制度最严密<strong>法治</strong>保护生态环境</li>
+</ol>
+<h4 class="section-title">三、全球生态文明建设</h4>
+<ul>
+<li>坚持<strong>共同但有区别</strong>的责任原则</li>
+</ul>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第十四章 维护和塑造国家安全</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、总体国家安全观</h4>
+<table class="md-table">
+<tr><th>要素</th><th>定位</th></tr>
+<tr><td><strong>人民安全</strong></td><td>宗旨</td></tr>
+<tr><td><strong>政治安全</strong></td><td>首要位置</td></tr>
+<tr><td><strong>经济安全</strong></td><td>基础</td></tr>
+<tr><td><strong>军事、科技、文化、社会安全</strong></td><td>保障</td></tr>
+<tr><td><strong>国际安全</strong></td><td>依托</td></tr>
+</table>
+<div class="memory-aid">💡 <strong>总体国家安全观 → &#x27;人宗政首经基军科文社保国依&#x27;</strong></div>
+<div class="memory-aid">💡 <strong>关键 = &quot;总体&quot;，强调&quot;大安全&quot;理念</strong></div>
+<h4 class="section-title">二、统筹发展和安全</h4>
+<ul>
+<li>发展 = 动力问题 = <strong>基础性、根本性</strong></li>
+<li>安全 = 保障问题 = <strong>条件</strong></li>
+<li>发展就是<strong>最大的安全</strong></li>
+</ul>
+<h4 class="section-title">三、维护政治安全</h4>
+<ul>
+<li>维护<strong>政权安全</strong>：坚持党的领导和长期执政</li>
+<li>维护<strong>制度安全</strong>：坚持和完善中国特色社会主义制度</li>
+<li>维护<strong>意识形态安全</strong>：坚持马克思主义指导地位</li>
+</ul>
+<div class="memory-aid">💡 <strong>政治安全 = 政权 + 制度 + 意识形态</strong></div>
+<h4 class="section-title">四、防范重大风险</h4>
+<ul>
+<li>警惕&quot;<strong>黑天鹅</strong>&quot;事件，防范&quot;<strong>灰犀牛</strong>&quot;事件</li>
+</ul>
+<div class="memory-aid">💡 <strong>黑天鹅 = 突发罕见；灰犀牛 = 显而易见却被忽视</strong></div>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第十五章 建设巩固国防和强大人民军队</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、强军目标</h4>
+<ul>
+<li><strong>听党指挥</strong>——灵魂（政治方向）</li>
+<li><strong>能打胜仗</strong>——核心（根本职能）</li>
+<li><strong>作风优良</strong>——保证（性质宗旨本色）</li>
+</ul>
+<div class="memory-aid">💡 <strong>强军目标 → &#x27;党灵魂 胜核心 优保证&#x27;</strong></div>
+<h4 class="section-title">二、国防和军队现代化战略安排</h4>
+<ul>
+<li>2020年基本实现机械化</li>
+<li><strong>2035年</strong>基本实现国防和军队现代化</li>
+<li><strong>本世纪中叶</strong>全面建成世界一流军队</li>
+</ul>
+<div class="memory-aid">💡 <strong>战略安排 → &#x27;20机35现中叶一流&#x27;</strong></div>
+<h4 class="section-title">三、加快推进国防和军队现代化</h4>
+<ol>
+<li><strong>政治建军</strong>——立军之本</li>
+<li><strong>改革强军</strong>——关键一招</li>
+<li><strong>科技强军</strong>——核心战斗力</li>
+<li><strong>人才强军</strong>——强军之道</li>
+<li><strong>依法治军</strong>——建军治军基本方式</li>
+</ol>
+<div class="memory-aid">💡 <strong>五条路径 → &#x27;政改科人法&#x27;</strong></div>
+<ul>
+<li>坚持<strong>党对人民军队的绝对领导</strong>——建军之本、强军之魂</li>
+<li>坚持<strong>军委主席负责制</strong></li>
+</ul>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第十六章 坚持&quot;一国两制&quot;和推进祖国完全统一</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、&quot;一国两制&quot;</h4>
+<ul>
+<li><strong>根本宗旨</strong>：维护国家主权、安全、发展利益，保持港澳长期繁荣稳定</li>
+<li>&quot;<strong>一国</strong>&quot;是前提和基础，&quot;<strong>两制</strong>&quot;从属和派生于&quot;一国&quot;</li>
+<li>坚持&quot;<strong>爱国者治港</strong>&quot;&quot;<strong>爱国者治澳</strong>&quot;</li>
+</ul>
+<div class="memory-aid">💡 <strong>一国 = 根本；两制 = 派生</strong></div>
+<h4 class="section-title">二、推进祖国完全统一</h4>
+<ul>
+<li>统一是<strong>历史大势、正道</strong>；&quot;台独&quot;是历史逆流、绝路</li>
+<li><strong>&quot;和平统一、一国两制&quot;</strong>是实现两岸统一的<strong>最佳方式</strong></li>
+<li>坚持<strong>一个中国原则</strong>和&quot;<strong>九二共识</strong>&quot;</li>
+<li><strong>决不承诺放弃使用武力</strong></li>
+</ul>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第十七章 中国特色大国外交和推动构建人类命运共同体</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、百年未有之大变局</h4>
+<ol>
+<li>国际力量对比深刻变化：&quot;<strong>东升西降</strong>&quot;</li>
+<li>新一轮科技革命和产业变革</li>
+<li>国际体系和国际秩序深度调整</li>
+</ol>
+<h4 class="section-title">二、中国特色大国外交</h4>
+<ul>
+<li>主线：<strong>服务民族复兴、促进人类进步</strong></li>
+<li>走<strong>和平发展道路</strong>——新时代中国外交的基本原则</li>
+</ul>
+<h4 class="section-title">三、推动构建人类命运共同体</h4>
+<p>内涵（五个世界）：</p>
+<ol>
+<li><strong>持久和平</strong>的世界</li>
+<li><strong>普遍安全</strong>的世界</li>
+<li><strong>共同繁荣</strong>的世界</li>
+<li><strong>开放包容</strong>的世界</li>
+<li><strong>清洁美丽</strong>的世界</li>
+</ol>
+<div class="memory-aid">💡 <strong>人类命运共同体 → &#x27;平安繁开洁&#x27;（和平、安全、繁荣、开放、清洁）</strong></div>
+<p>价值基础：弘扬<strong>全人类共同价值</strong></p>
+<h4 class="section-title">四、高质量共建&quot;一带一路&quot;</h4>
+<ul>
+<li>追求<strong>发展</strong>，崇尚<strong>共赢</strong>，传递<strong>希望</strong></li>
+<li>不以意识形态划界，不搞零和游戏</li>
+</ul>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>第十八章 全面从严治党</h3></div><div class="chapter-content" style="display:none">
+<h4 class="section-title">一、全面从严治党的内涵</h4>
+<ul>
+<li><strong>核心</strong>：加强党的领导</li>
+<li><strong>基础</strong>：全面</li>
+<li><strong>关键</strong>：严</li>
+<li><strong>要害</strong>：治</li>
+</ul>
+<div class="memory-aid">💡 <strong>全面从严治党 → &#x27;核全关要&#x27;（核心=领导，基础=全面，关键=严，要害=治）</strong></div>
+<h4 class="section-title">二、新时代党的建设总要求</h4>
+<ul>
+<li><strong>主线</strong>：加强党的长期执政能力建设、先进性和纯洁性建设</li>
+<li><strong>统领</strong>：党的<strong>政治建设</strong></li>
+<li><strong>根基</strong>：坚定理想信念宗旨</li>
+<li><strong>着力点</strong>：调动全党积极性、主动性、创造性</li>
+<li>全面推进：<strong>政治建设、思想建设、组织建设、作风建设、纪律建设</strong>，把<strong>制度建设</strong>贯穿其中</li>
+</ul>
+<div class="memory-aid">💡 <strong>统领 = 政治建设；根基 = 理想信念</strong></div>
+<h4 class="section-title">三、把政治建设摆在首位</h4>
+<ul>
+<li>党的政治建设是党的<strong>根本性建设</strong></li>
+<li>保证全党服从中央，坚持党中央权威和集中统一领导</li>
+</ul>
+<h4 class="section-title">四、反腐败斗争</h4>
+<ul>
+<li>腐败是党长期执政面临的<strong>最大威胁</strong></li>
+<li>坚持<strong>无禁区、全覆盖、零容忍</strong></li>
+<li>&quot;打虎&quot;&quot;拍蝇&quot;&quot;猎狐&quot;多管齐下</li>
+<li>核心是<strong>制度制约和监督权力</strong></li>
+<li>一体推进<strong>不敢腐、不能腐、不想腐</strong>：不敢=前提；不能=关键；不想=根本</li>
+</ul>
+<div class="memory-aid">💡 <strong>三不 → &#x27;不敢前 不能关 不想根&#x27;</strong></div>
+<h4 class="section-title">五、党的自我革命</h4>
+<ul>
+<li>勇于自我革命是党<strong>最大的优势、最鲜明的品格</strong></li>
+<li>是跳出<strong>历史周期率</strong>的<strong>第二个答案</strong></li>
+</ul>
+<div class="memory-aid">💡 <strong>历史周期率两个答案：第一个=人民监督（毛泽东）；第二个=自我革命（习近平）</strong></div>
+<p>---</p>
+<div class="chapter-section"><div class="chapter-header" onclick="toggleChapter(this)"><span class="chapter-toggle">▶</span><h3>📋 第三部分 高频考点速览</h3></div><div class="chapter-content" style="display:none">
+<table class="md-table">
+<tr><th>序号</th><th>高频考点</th><th>关键词/口诀</th></tr>
+<tr><td>1</td><td>&quot;十个明确&quot;核心内容</td><td>领导总任务矛盾布局</td></tr>
+<tr><td>2</td><td>&quot;六个必须坚持&quot;</td><td>人自守问系天</td></tr>
+<tr><td>3</td><td>社会主要矛盾</td><td>美好生活需要 vs 不平衡不充分</td></tr>
+<tr><td>4</td><td>中国式现代化五特征</td><td>人文物人和</td></tr>
+<tr><td>5</td><td>新发展理念</td><td>创协绿开共</td></tr>
+<tr><td>6</td><td>总体国家安全观</td><td>人民宗旨 政治首要 经济基础</td></tr>
+<tr><td>7</td><td>强军目标</td><td>听党指挥灵魂 能打胜仗核心</td></tr>
+<tr><td>8</td><td>全面从严治党</td><td>核心领导 基础全面 关键严 要害治</td></tr>
+<tr><td>9</td><td>&quot;两个确立&quot;</td><td>核心地位 + 指导地位</td></tr>
+<tr><td>10</td><td>人类命运共同体五个世界</td><td>平安繁开洁</td></tr>
+</table>
+<p>---</p>
+    <div class="part-header" id="exam"><h2>📝 考试形式与分值</h2></div>
+<table class="md-table">
+<tr><th>题型</th><th>题量</th><th>每题分值</th><th>小计</th></tr>
+<tr><td><strong>单项选择题</strong></td><td>35题</td><td>2分</td><td><strong>70分</strong></td></tr>
+<tr><td><strong>简答题</strong></td><td>4题</td><td>10分</td><td><strong>40分</strong></td></tr>
+<tr><td><strong>论述题</strong></td><td>2题</td><td>20分</td><td><strong>40分</strong></td></tr>
+<tr><td><strong>合计</strong></td><td>—</td><td>—</td><td><strong>150分</strong></td></tr>
+</table>
+<div class="memory-aid">💡 <strong>选择题占70分 = 半壁江山，务必重视基础知识的准确记忆！</strong></div>
+<div class="memory-aid">💡 <strong>简答题40分 = 关键词+展开，论述题40分 = 观点+论据+结合实际</strong></div>
+<p>---</p>
+<div class="note-box">📌 <strong>复习建议</strong>：</div>
+<div class="quote-box">1. 先通读大纲，建立知识框架</div>
+<div class="quote-box">2. 重点记忆💡口诀，应对选择题</div>
+<div class="quote-box">3. 简答题背诵要点关键词，论述题练习完整表述</div>
+<div class="quote-box">4. 三大理论部分分值分布均匀，不可偏废</div>
+  </div>
+</div>
+
+<!-- Flashcard overlay -->
+<div class="flashcard-overlay" id="flashcardOverlay">
+  <div class="flashcard">
+    <button class="flashcard-close" onclick="closeFlashcard()">✕</button>
+    <div class="flashcard-context" id="fcContext"></div>
+    <div class="flashcard-text" id="fcText"></div>
+    <div class="flashcard-nav">
+      <button onclick="fcPrev()">◀ 上一个</button>
+      <span class="flashcard-counter" id="fcCounter">1 / 10</span>
+      <button onclick="fcNext()">下一个 ▶</button>
+      <button class="flashcard-shuffle" onclick="fcShuffle()">🔀 随机</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const memoryAids = [{"context": "成考专升本·政治考点速记大纲", "text": "💡 = 记忆口诀/助记提示　　📊 = 对比表格　　⭐ = 高频考点标记"}, {"context": "一、哲学及其基本问题", "text": "💡 **哲学 = 系统化的世界观 + 方法论的统一**"}, {"context": "⭐ 哲学基本问题（考点2）", "text": "💡 **哲学基本问题两方面 → '本原 + 同一性'**"}, {"context": "⭐ 哲学基本问题（考点2）", "text": "💡 第一方面 = 唯物vs唯心；第二方面 = 可知vs不可知"}, {"context": "⭐ 哲学主要派别（考点3）", "text": "💡 **三种唯物主义 → '古朴→近形→辩证'**"}, {"context": "⭐ 哲学主要派别（考点3）", "text": "💡 **辩证法vs形而上学的根本分歧 = 是否承认矛盾**"}, {"context": "二、马克思主义哲学的基本特征", "text": "💡 **四大特征 → '实阶科创'，实践性是基础**"}, {"context": "二、马克思主义哲学的基本特征", "text": "💡 四者有机统一，实践性是核心基础"}, {"context": "⭐ 哲学的物质范畴（考点1）", "text": "💡 **物质唯一特性 = 客观实在性**（不是运动！运动是根本属性）"}, {"context": "⭐ 物质的存在方式（考点2）", "text": "💡 **时间一维、空间三维**"}, {"context": "⭐ 物质的存在方式（考点2）", "text": "💡 唯一特性≠根本属性：唯一特性=客观实在性；根本属性=运动"}, {"context": "⭐ 物质决定意识（考点1）", "text": "💡 意识产生：自然界产物 + 社会产物 → 人脑机能 → 客观世界的主观映象"}, {"context": "⭐ 意识对物质的反作用（考点2）", "text": "💡 **意识能动作用 → '目计创改调'（目的性、计划性、创造性、改造、调控）**"}, {"context": "⭐ 主观能动性与客观规律性的统一（考点3）", "text": "💡 **前提 = 从实际出发；途径 = 实践；条件 = 物质手段**"}, {"context": "⭐ 事物的普遍联系（考点1）", "text": "💡 **联系四特征 → '客普多条'**"}, {"context": "⭐ 对立统一规律（考点1）——唯物辩证法的实质和核心", "text": "💡 **实质和核心 = 对立统一规律**（不是否定之否定！）"}, {"context": "⭐ 对立统一规律（考点1）——唯物辩证法的实质和核心", "text": "💡 同一性 = 吸引连结；斗争性 = 排斥对立"}, {"context": "⭐ 对立统一规律（考点1）——唯物辩证法的实质和核心", "text": "💡 **普遍性与特殊性 = 共性与个性**"}, {"context": "⭐ 对立统一规律（考点1）——唯物辩证法的实质和核心", "text": "💡 **事物性质 → 由主要矛盾的主要方面规定**"}, {"context": "⭐ 量变质变规律（考点2）", "text": "💡 **量变→必要准备；质变→必然结果**"}, {"context": "⭐ 否定之否定规律（考点3）", "text": "💡 **辩证否定 = 自我否定 + 发展环节 + 联系环节 + 扬弃**"}, {"context": "⭐ 否定之否定规律（考点3）", "text": "💡 发展趋势和道路 = **前进性与曲折性的统一**"}, {"context": "三、联系和发展的基本环节", "text": "💡 **五对范畴 → '内本因必现'（内容、本质、原因、必然、现实）**"}, {"context": "⭐ 科学的实践观（考点1-2）", "text": "💡 **实践三特点 → '客自社'（客观物质性、自觉能动性、社会历史性）**"}, {"context": "⭐ 科学的实践观（考点1-2）", "text": "💡 **实践三形式 → '物社科'**"}, {"context": "⭐ 认识的本质与过程（考点3）", "text": "💡 **两次飞跃：感性→理性（第一次）；理性→实践（第二次）**"}, {"context": "⭐ 实践与认识的辩证运动规律（考点4）", "text": "💡 **实践→认识→再实践→再认识 = 知行统一观**"}, {"context": "⭐ 真理的客观性、绝对性和相对性（考点1）", "text": "💡 **真理客观性 = 唯物论问题；绝对性与相对性 = 辩证法问题**"}, {"context": "⭐ 真理的检验标准（考点2）", "text": "💡 **唯一标准 = 实践**（不是主观认识，不是客观事物）"}, {"context": "三、认识世界和改造世界", "text": "💡 **思想路线核心 = 实事求是**"}, {"context": "⭐ 历史观的基本问题（考点1）", "text": "💡 **历史观基本问题 = 社会存在与社会意识的关系**"}, {"context": "⭐ 唯心史观的主要缺陷（考点2）", "text": "💡 **唯心史观两大缺陷 → '精神动因 + 英雄创造'**"}, {"context": "⭐ 唯物史观创立的伟大意义（考点3）", "text": "💡 **理论来源 → '德哲英经法空想'**"}, {"context": "⭐ 社会存在在社会发展中的作用（考点1）", "text": "💡 **生产方式决定作用 → '分基关面'（分离、基础、关系、面貌）**"}, {"context": "⭐ 社会意识及其结构（考点2）", "text": "💡 **社会意识形态 = 进入上层建筑的社会意识形式 = 思想上层建筑**"}, {"context": "⭐ 生产力与生产关系（考点1）", "text": "💡 **生产力三要素 → '资对劳'（资料、对象、劳动者）**"}, {"context": "⭐ 生产力与生产关系（考点1）", "text": "💡 **四类因素 → '实运渗准'**"}, {"context": "四、经济基础与上层建筑的矛盾运动", "text": "💡 **经济基础 = 生产关系总和；上层建筑 = 意识形态 + 制度组织设施**"}, {"context": "五、社会形态更替", "text": "💡 **五种社会形态依次更替 = 统一性；跨越/跃迁/渗透 = 多样性**"}, {"context": "一、社会基本矛盾", "text": "💡 **根本动力 = 社会基本矛盾；最终决定力量 = 生产力**"}, {"context": "二、阶级斗争和社会革命", "text": "💡 **直接动力 = 阶级斗争；根源 = 社会基本矛盾尖锐化**"}, {"context": "三、科学技术", "text": "💡 **科技作用 → '生文活思'（生产方式、文明、生活方式、思维方式）**"}, {"context": "四、文化的作用", "text": "💡 **文化作用 → '思精凝'**"}, {"context": "⭐ 人民群众的决定作用（考点2）", "text": "💡 **人民群众 → '物精变'**"}, {"context": "⭐ 群众路线（考点3）", "text": "💡 **群众路线 → '两个一切 + 一来一去'**"}, {"context": "⭐ 群众、阶级、政党、领袖的关系（考点5）", "text": "💡 **群众→阶级→政党→领袖（层层递进）**"}, {"context": "一、马克思主义中国化时代化的提出", "text": "💡 **1938年六届六中全会 = 首次提出马克思主义中国化**"}, {"context": "三、马克思主义中国化时代化的历史进程", "text": "💡 **关键节点 → '35遵义38化45七'**"}, {"context": "一、毛泽东思想的形成和发展", "text": "💡 **形成过程 → '萌初成继'（萌芽、初步形成、成熟、继续发展）**"}, {"context": "⭐ 活的灵魂（三方面）", "text": "💡 **活的灵魂 → '实群独'（实事求是、群众路线、独立自主）**"}, {"context": "⭐ 活的灵魂（三方面）", "text": "💡 **实事求是 = 精髓；群众路线 = 根本工作路线；独立自主 = 民族精神之魂**"}, {"context": "⭐ 总路线（考点1）", "text": "💡 **总路线核心 = 无产阶级领导**"}, {"context": "⭐ 总路线（考点1）", "text": "💡 **革命对象 → '帝封资'（帝国主义、封建主义、官僚资本主义）**"}, {"context": "⭐ 总路线（考点1）", "text": "💡 **民族资产阶级特性 → 革命性 + 软弱性**"}, {"context": "⭐ 基本纲领（考点2）", "text": "💡 **经济纲领 → '两没一保'**"}, {"context": "⭐ 革命道路（考点1）", "text": "💡 **工农武装割据 → '武土根'（武装、土地、根据地）**"}, {"context": "⭐ 革命道路（考点1）", "text": "💡 **三个关系：土地革命=基本内容；武装斗争=主要形式+保证；根据地=战略阵地+依托**"}, {"context": "⭐ 三大法宝（考点2）", "text": "💡 **三大法宝 → '统战武装党建'**"}, {"context": "⭐ 三大法宝（考点2）", "text": "💡 统一战线是实行武装斗争的统一战线；武装斗争是统一战线的中心支柱"}, {"context": "二、党在过渡时期的总路线", "text": "💡 **一化三改 → 工业化（主体）+ 三改造（两翼）**"}, {"context": "三、社会主义改造道路", "text": "💡 **三大改造 → '农手资'**"}, {"context": "三、社会主义改造道路", "text": "💡 **资本主义工商业 = 和平赎买 + 国家资本主义**"}, {"context": "三、社会主义改造道路", "text": "💡 农业三步：互助组（萌芽）→初级社（半社会主义）→高级社（完全社会主义）"}, {"context": "⭐ 考点2：正确认识和处理社会主义社会矛盾", "text": "💡 **两类矛盾 → '敌专民专'（敌我用专政，人民用民主）**"}, {"context": "⭐ 考点4：\"四个现代化\" → 工业、农业、科学文化、国防", "text": "💡 **四化 → '工农科国'**"}, {"context": "一、社会历史条件", "text": "💡 **邓→社会主义；三→党；科→发展；习→新时代课题**"}, {"context": "二、形成发展过程", "text": "💡 **关键年份 → '78开82提87概92熟97立02三07科17习18宪'**"}, {"context": "⭐ 社会主义的本质（1992年南方谈话）", "text": "💡 **社会主义本质 → '解放发展消灭消除达到'**"}, {"context": "二、邓小平理论的主要内容", "text": "💡 **基本路线 → '一个中心两个基本点'**"}, {"context": "二、邓小平理论的主要内容", "text": "💡 **三步走 → '温饱→小康→中等发达'**"}, {"context": "一、核心观点", "text": "💡 **三个代表 → '生产力 + 文化 + 人民'**"}, {"context": "一、科学内涵", "text": "💡 **科学发展观内涵 → '发人全统'（发展、以人为本、全面协调可持续、统筹兼顾）**"}, {"context": "一、创立的时代背景", "text": "💡 **时代背景 → '变局复兴现代化科社自我革命'**"}, {"context": "⭐ 三大时代课题", "text": "💡 **三大课题 → '社会主义 + 现代化强国 + 长期执政党'**"}, {"context": "⭐ \"十个明确\"（核心内容）", "text": "💡 **十个明确核心 → '领导总任务矛盾布局改法经军外治'**"}, {"context": "⭐ \"十四个坚持\"（基本方略）", "text": "💡 **十四个坚持 → '党领民中改新理价生安军一国命治'**"}, {"context": "⭐ \"六个必须坚持\"（世界观和方法论）", "text": "💡 **六个必须坚持 → '人自守问系天'（人民至上、自信自立、守正创新、问题导向、系统观念、胸怀天下）**"}, {"context": "四、历史地位和\"两个确立\"", "text": "💡 **两个确立 → '核心地位 + 指导地位'**"}, {"context": "⭐ 新时代意义（三大意义）", "text": "💡 **三大意义 → '飞跃科社拓展'**"}, {"context": "⭐ 社会主要矛盾变化", "text": "💡 **主要矛盾变了，基本国情没变**"}, {"context": "二、总体布局和战略布局", "text": "💡 **五位一体 → '经政文社生'；四个全面 → '建改法治'**"}, {"context": "一、中国梦", "text": "💡 **中国梦本质 → '富强振兴幸福'**"}, {"context": "二、全面建成社会主义现代化强国（两步走）", "text": "💡 **两步走 → '35基本 中叶建成'**"}, {"context": "⭐ 中国特色（五方面）", "text": "💡 **中国式现代化五特征 → '人文物人和'（人口、文明、物质精神、人自然、和平）**"}, {"context": "⭐ 本质要求", "text": "💡 **本质要求 → '两坚持五实现一推动一创造'**"}, {"context": "⭐ 重大原则（五条）", "text": "💡 **五条原则 → '党路民改争'**"}, {"context": "⭐ 正确处理的重大关系（六对）", "text": "💡 **六对关系 → '顶战守效活自'**"}, {"context": "三、党的领导制度体系", "text": "💡 **六项制度 → '不忘权威全面为执治'**"}, {"context": "三、共同富裕", "text": "💡 **三次分配 → '初再三'；目标结构 → '橄榄型'**"}, {"context": "一、改革开放的地位", "text": "💡 **两个会议 → '十一启十八深'**"}, {"context": "二、全面深化改革总目标", "text": "💡 **总目标 = 制度完善 + 治理现代化**"}, {"context": "三、改革方法论", "text": "💡 **方法论 → '系顶统胆法'**"}, {"context": "二、新发展理念", "text": "💡 **五大理念 → '创协绿开共'**"}, {"context": "二、新发展理念", "text": "💡 **创新=第一动力；协调=内在要求；绿色=必要条件；开放=必由之路；共享=本质要求**"}, {"context": "三、社会主义基本经济制度", "text": "💡 **基本经济制度三方面 → '所有制+分配制+市场体制'**"}, {"context": "四、新发展格局", "text": "💡 **新发展格局 → '内主外促'**"}, {"context": "一、基础性、战略性支撑", "text": "💡 **三者定位 → '基础性+战略性'**"}, {"context": "二、建设教育强国", "text": "💡 **教育三问 → '什么怎样为谁'**"}, {"context": "一、中国特色社会主义政治制度", "text": "💡 **根本制度 → 人大；基本制度 → '协民族基层'**"}, {"context": "一、中国特色社会主义政治制度", "text": "💡 **有机统一 → '党民法'**"}, {"context": "二、全过程人民民主", "text": "💡 **全过程人民民主 → '四统一三全三最'**"}, {"context": "一、法治道路核心要义", "text": "💡 **五原则 → '党人平德实'**"}, {"context": "二、法治体系建设", "text": "💡 **五大体系 → '规范实施监督保障党规'**"}, {"context": "三、法治中国建设", "text": "💡 **工作布局 → '三共同三一体+涉外'**"}, {"context": "二、文化发展道路", "text": "💡 **二为双百 → '人民+社会服务；百花+百家'**"}, {"context": "四、弘扬中国共产党人精神谱系", "text": "💡 **建党精神 → '真理想 初使命 不怕死 忠人民'**"}, {"context": "五、中华文明突出特性（五大特性）", "text": "💡 **五特性 → '创统和包和' → 创新、统一、连续、包容、和平**"}, {"context": "三、推进社会治理现代化", "text": "💡 **社会治理 → '共建共治共享' + '系依综源'**"}, {"context": "二、建设美丽中国", "text": "💡 **一体化治理 → '山水林田湖草沙'**"}, {"context": "一、总体国家安全观", "text": "💡 **总体国家安全观 → '人宗政首经基军科文社保国依'**"}, {"context": "一、总体国家安全观", "text": "💡 **关键 = \"总体\"，强调\"大安全\"理念**"}, {"context": "三、维护政治安全", "text": "💡 **政治安全 = 政权 + 制度 + 意识形态**"}, {"context": "四、防范重大风险", "text": "💡 **黑天鹅 = 突发罕见；灰犀牛 = 显而易见却被忽视**"}, {"context": "一、强军目标", "text": "💡 **强军目标 → '党灵魂 胜核心 优保证'**"}, {"context": "二、国防和军队现代化战略安排", "text": "💡 **战略安排 → '20机35现中叶一流'**"}, {"context": "三、加快推进国防和军队现代化", "text": "💡 **五条路径 → '政改科人法'**"}, {"context": "一、\"一国两制\"", "text": "💡 **一国 = 根本；两制 = 派生**"}, {"context": "三、推动构建人类命运共同体", "text": "💡 **人类命运共同体 → '平安繁开洁'（和平、安全、繁荣、开放、清洁）**"}, {"context": "一、全面从严治党的内涵", "text": "💡 **全面从严治党 → '核全关要'（核心=领导，基础=全面，关键=严，要害=治）**"}, {"context": "二、新时代党的建设总要求", "text": "💡 **统领 = 政治建设；根基 = 理想信念**"}, {"context": "四、反腐败斗争", "text": "💡 **三不 → '不敢前 不能关 不想根'**"}, {"context": "五、党的自我革命", "text": "💡 **历史周期率两个答案：第一个=人民监督（毛泽东）；第二个=自我革命（习近平）**"}, {"context": "📝 考试形式与分值", "text": "💡 **选择题占70分 = 半壁江山，务必重视基础知识的准确记忆！**"}, {"context": "📝 考试形式与分值", "text": "💡 **简答题40分 = 关键词+展开，论述题40分 = 观点+论据+结合实际**"}];
+let fcIndex = 0;
+let fcOrder = [...Array(memoryAids.length).keys()];
+
+function toggleChapter(header) {
+  header.classList.toggle('open');
+  const content = header.nextElementSibling;
+  content.style.display = content.style.display === 'none' ? 'block' : 'none';
+}
+
+function expandAll() {
+  document.querySelectorAll('.chapter-header').forEach(h => {
+    h.classList.add('open');
+    h.nextElementSibling.style.display = 'block';
+  });
+}
+
+function collapseAll() {
+  document.querySelectorAll('.chapter-header').forEach(h => {
+    h.classList.remove('open');
+    h.nextElementSibling.style.display = 'none';
+  });
+}
+
+function scrollToPart(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  closeSidebar();
+}
+
+function scrollToChapter(navEl, idx) {
+  const chapters = document.querySelectorAll('.chapter-section');
+  if (chapters[idx]) {
+    const header = chapters[idx].querySelector('.chapter-header');
+    if (!header.classList.contains('open')) {
+      header.classList.add('open');
+      header.nextElementSibling.style.display = 'block';
+    }
+    chapters[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.querySelectorAll('.nav-chapter').forEach(n => n.classList.remove('active'));
+  navEl.classList.add('active');
+  closeSidebar();
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebarBackdrop').classList.toggle('show');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarBackdrop').classList.remove('show');
+}
+
+// Search
+function doSearch(query) {
+  const wrap = document.getElementById('contentWrap');
+  // Remove old highlights
+  wrap.querySelectorAll('mark').forEach(m => {
+    const parent = m.parentNode;
+    parent.replaceChild(document.createTextNode(m.textContent), m);
+    parent.normalize();
+  });
+  if (!query || query.length < 2) return;
+  
+  // Find and highlight
+  const walker = document.createTreeWalker(wrap, NodeFilter.SHOW_TEXT, null, false);
+  const textNodes = [];
+  while (walker.nextNode()) textNodes.push(walker.currentNode);
+  
+  let firstMatch = null;
+  textNodes.forEach(node => {
+    const idx = node.textContent.toLowerCase().indexOf(query.toLowerCase());
+    if (idx >= 0) {
+      const range = document.createRange();
+      range.setStart(node, idx);
+      range.setEnd(node, idx + query.length);
+      const mark = document.createElement('mark');
+      range.surroundContents(mark);
+      if (!firstMatch) firstMatch = mark;
+    }
+  });
+  if (firstMatch) {
+    firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+// Flashcard
+function openFlashcard() {
+  fcIndex = 0;
+  fcOrder = [...Array(memoryAids.length).keys()];
+  renderFlashcard();
+  document.getElementById('flashcardOverlay').classList.add('show');
+}
+function closeFlashcard() {
+  document.getElementById('flashcardOverlay').classList.remove('show');
+}
+function renderFlashcard() {
+  const aid = memoryAids[fcOrder[fcIndex]];
+  document.getElementById('fcContext').textContent = aid.context || '';
+  document.getElementById('fcText').innerHTML = aid.text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  document.getElementById('fcCounter').textContent = (fcIndex + 1) + ' / ' + memoryAids.length;
+}
+function fcNext() {
+  fcIndex = (fcIndex + 1) % memoryAids.length;
+  renderFlashcard();
+}
+function fcPrev() {
+  fcIndex = (fcIndex - 1 + memoryAids.length) % memoryAids.length;
+  renderFlashcard();
+}
+function fcShuffle() {
+  for (let i = fcOrder.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [fcOrder[i], fcOrder[j]] = [fcOrder[j], fcOrder[i]];
+  }
+  fcIndex = 0;
+  renderFlashcard();
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (document.getElementById('flashcardOverlay').classList.contains('show')) {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); fcNext(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); fcPrev(); }
+    if (e.key === 'Escape') closeFlashcard();
+  }
+});
+
+// Wrap tables in scrollable container for mobile
+document.querySelectorAll('.md-table').forEach(table => {
+  if (!table.parentElement.classList.contains('md-table-wrap')) {
+    const wrap = document.createElement('div');
+    wrap.className = 'md-table-wrap';
+    table.parentNode.insertBefore(wrap, table);
+    wrap.appendChild(table);
+  }
+});
+
+// Close sidebar when tapping content area on mobile (but not the top bar)
+document.querySelector('.content-wrap').addEventListener('click', () => {
+  if (window.innerWidth <= 768) closeSidebar();
+});
+
+// Swipe support for flashcard
+(function() {
+  let startX = 0, startY = 0;
+  const overlay = document.getElementById('flashcardOverlay');
+  overlay.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  }, { passive: true });
+  overlay.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = e.changedTouches[0].clientY - startY;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) fcNext(); else fcPrev();
+    }
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
